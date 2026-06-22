@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Japan · Oct 19–29</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --washi:#F4EFE3;
+    --washi-2:#ECE5D4;
+    --sumi:#1B2530;
+    --sumi-soft:#41505d;
+    --line:#d8cfbb;
+    /* city accents */
+    --tokyo:#27506B;   /* indigo */
+    --kyoto:#C0432B;   /* vermilion */
+    --osaka:#C2862A;   /* amber */
+    --seal:#C0432B;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--washi);
+    color:var(--sumi);
+    font-family:"Zen Kaku Gothic New",system-ui,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .mono{font-family:"Space Mono",monospace}
+  .wrap{max-width:680px;margin:0 auto;padding:0 20px}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;padding:54px 20px 30px;max-width:680px;margin:0 auto}
+  .seal{
+    width:74px;height:74px;border:2.5px solid var(--seal);border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--seal);font-family:"Shippori Mincho",serif;font-weight:800;font-size:38px;
+    transform:rotate(-4deg);margin-bottom:22px;
+    box-shadow:inset 0 0 0 2px rgba(192,67,43,.12);
+  }
+  .eyebrow{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--sumi-soft)}
+  .hero h1{
+    font-family:"Shippori Mincho",serif;font-weight:800;
+    font-size:clamp(56px,18vw,96px);line-height:.94;letter-spacing:-.01em;margin:6px 0 4px;
+  }
+  .hero h1 .jp{color:var(--seal);font-size:.62em;margin-left:.06em;font-weight:700}
+  .hero .sub{font-size:16px;color:var(--sumi-soft);max-width:34ch;margin-top:14px}
+
+  /* route line */
+  .route{display:flex;align-items:center;gap:0;margin:26px 0 2px;flex-wrap:wrap}
+  .route .stop{display:flex;align-items:center;gap:8px;font-weight:700;font-size:15px}
+  .route .dot{width:11px;height:11px;border-radius:50%}
+  .route .seg{height:2px;flex:1;min-width:22px;margin:0 10px;border-radius:2px}
+  .r-tokyo .dot{background:var(--tokyo)} .r-kyoto .dot{background:var(--kyoto)} .r-osaka .dot{background:var(--osaka)}
+  .seg-1{background:linear-gradient(90deg,var(--tokyo),var(--kyoto))}
+  .seg-2{background:linear-gradient(90deg,var(--kyoto),var(--osaka))}
+
+  .howto{
+    margin-top:26px;padding:13px 16px;border:1px dashed var(--line);border-radius:12px;
+    font-size:13.5px;color:var(--sumi-soft);background:rgba(255,255,255,.35)
+  }
+  .howto b{color:var(--sumi)}
+
+  /* ---------- STICKY NAV ---------- */
+  .nav{position:sticky;top:0;z-index:50;background:rgba(244,239,227,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav-inner{max-width:680px;margin:0 auto;display:flex;gap:8px;padding:10px 20px}
+  .nav a{
+    flex:1;text-align:center;text-decoration:none;font-family:"Space Mono",monospace;
+    font-size:12px;letter-spacing:.04em;padding:8px 4px;border-radius:9px;
+    color:var(--sumi);border:1.5px solid transparent;transition:.15s
+  }
+  .nav a span{display:block;font-size:10px;color:var(--sumi-soft);margin-top:1px}
+  .nav a.tk{background:rgba(39,80,107,.10)} .nav a.tk.on{border-color:var(--tokyo)}
+  .nav a.ky{background:rgba(192,67,43,.10)} .nav a.ky.on{border-color:var(--kyoto)}
+  .nav a.os{background:rgba(194,134,42,.12)} .nav a.os.on{border-color:var(--osaka)}
+
+  /* ---------- SECTION TITLES ---------- */
+  .sec-head{padding:38px 0 4px}
+  .sec-head .eyebrow{display:block;margin-bottom:6px}
+  .sec-head h2{font-family:"Shippori Mincho",serif;font-size:30px;font-weight:700}
+
+  /* ---------- HOTELS ---------- */
+  .hotels{display:grid;gap:12px;margin-top:18px}
+  .hotel{
+    display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);
+    border-radius:14px;padding:14px 16px;border-left-width:5px;
+  }
+  .hotel.tk{border-left-color:var(--tokyo)} .hotel.ky{border-left-color:var(--kyoto)} .hotel.os{border-left-color:var(--osaka)}
+  .hotel .city{font-family:"Shippori Mincho",serif;font-size:19px;font-weight:700;flex:1}
+  .hotel .nights{font-family:"Space Mono",monospace;font-size:11px;color:var(--sumi-soft)}
+  .hotel .dates{text-align:right;font-size:13px}
+  .hotel .dates b{display:block;font-family:"Space Mono",monospace;font-size:12.5px}
+  .hotel .dates .arrow{color:var(--line)}
+
+  /* ---------- RAIL TIMELINE ---------- */
+  .rail{position:relative;margin-top:10px;padding-left:34px}
+  .rail::before{content:"";position:absolute;left:9px;top:6px;bottom:30px;width:3px;border-radius:3px;
+    background:linear-gradient(180deg,var(--tokyo) 0%,var(--tokyo) 33%,var(--kyoto) 42%,var(--kyoto) 72%,var(--osaka) 80%,var(--osaka) 100%)}
+  .day{position:relative;padding:18px 0 8px;opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+  .day.show{opacity:1;transform:none}
+  .day::before{content:"";position:absolute;left:-30px;top:24px;width:15px;height:15px;border-radius:50%;
+    background:var(--washi);border:3px solid var(--tokyo)}
+  .day.ky::before{border-color:var(--kyoto)} .day.os::before{border-color:var(--osaka)}
+  .day.trip::before{background:var(--kyoto);border-color:var(--kyoto)}
+  .day.tk.trip::before{background:var(--tokyo);border-color:var(--tokyo)}
+
+  .day-top{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:3px}
+  .day-no{font-family:"Space Mono",monospace;font-size:11.5px;letter-spacing:.08em;color:var(--sumi-soft)}
+  .tag{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.06em;padding:2px 8px;border-radius:20px;text-transform:uppercase;font-weight:700}
+  .tag.trip{background:var(--kyoto);color:#fff}
+  .tag.travel{background:var(--sumi);color:var(--washi)}
+  .day h3{font-family:"Shippori Mincho",serif;font-size:21px;font-weight:700;margin:1px 0 10px;line-height:1.2}
+
+  .stops{list-style:none;display:grid;gap:7px}
+  .stops a, .stops .plain{
+    display:flex;gap:10px;align-items:flex-start;text-decoration:none;color:inherit;
+    background:#fff;border:1px solid var(--line);border-radius:11px;padding:10px 12px;transition:.15s
+  }
+  .stops a:active{transform:scale(.99)}
+  .stops a:hover{border-color:var(--sumi-soft)}
+  .pin{flex-shrink:0;width:20px;height:20px;margin-top:1px;color:var(--kyoto)}
+  .day.tk .pin{color:var(--tokyo)} .day.os .pin{color:var(--osaka)}
+  .stop-txt{flex:1}
+  .stop-txt b{font-weight:700;font-size:15px}
+  .stop-txt .note{display:block;font-size:12.5px;color:var(--sumi-soft);line-height:1.45;margin-top:1px}
+  .stops a .go{font-family:"Space Mono",monospace;font-size:10px;color:var(--sumi-soft);flex-shrink:0;margin-top:3px;white-space:nowrap}
+  .plain .stop-txt b{font-weight:500;color:var(--sumi-soft)}
+
+  /* ---------- TIPS ---------- */
+  .tips{display:grid;gap:10px;margin-top:18px}
+  .tip{background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px 16px}
+  .tip h4{font-family:"Shippori Mincho",serif;font-size:16px;margin-bottom:3px;display:flex;align-items:center;gap:8px}
+  .tip h4 .k{font-family:"Shippori Mincho",serif;color:var(--seal);font-size:15px}
+  .tip p{font-size:13.5px;color:var(--sumi-soft)}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:46px 20px 60px;text-align:center;color:var(--sumi-soft);font-size:12.5px}
+  footer .seal{margin:0 auto 16px;width:56px;height:56px;font-size:28px;border-radius:11px}
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .day{opacity:1;transform:none;transition:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="seal">旅</div>
+  <span class="eyebrow">First-timer itinerary · 10 days</span>
+  <h1>Japan<span class="jp">日本</span></h1>
+  <p class="sub">Anime, temples, street food and Mt. Fuji — a westbound run from Tokyo to Osaka by bullet train.</p>
+
+  <div class="route">
+    <div class="stop r-tokyo"><span class="dot"></span>Tokyo</div>
+    <div class="seg seg-1"></div>
+    <div class="stop r-kyoto"><span class="dot"></span>Kyoto</div>
+    <div class="seg seg-2"></div>
+    <div class="stop r-osaka"><span class="dot"></span>Osaka</div>
+  </div>
+  <p class="eyebrow" style="margin-top:14px">Oct 19 — Oct 29, 2026</p>
+
+  <div class="howto">📍 <b>Tap any place</b> to open it in Google Maps, then hit Directions. Works on your phone in Japan — pin this page to your home screen.</div>
+</header>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#tokyo" class="tk on">TOKYO<span>Days 1–4</span></a>
+    <a href="#kyoto" class="ky">KYOTO<span>Days 5–8</span></a>
+    <a href="#osaka" class="os">OSAKA<span>Days 9–10</span></a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- HOTELS -->
+  <div class="sec-head"><span class="eyebrow">Where you sleep</span><h2>3 hotels, that's it</h2></div>
+  <div class="hotels">
+    <div class="hotel tk"><div><div class="city">Tokyo</div><div class="nights">4 nights</div></div>
+      <div class="dates"><b>Oct 19</b><span class="arrow">↓</span><b>Oct 23</b></div></div>
+    <div class="hotel ky"><div><div class="city">Kyoto</div><div class="nights">4 nights</div></div>
+      <div class="dates"><b>Oct 23</b><span class="arrow">↓</span><b>Oct 27</b></div></div>
+    <div class="hotel os"><div><div class="city">Osaka</div><div class="nights">2 nights</div></div>
+      <div class="dates"><b>Oct 27</b><span class="arrow">↓</span><b>Oct 29</b></div></div>
+  </div>
+
+  <!-- TOKYO -->
+  <div class="sec-head" id="tokyo"><span class="eyebrow" style="color:var(--tokyo)">Days 1–4 · 東京</span><h2>Tokyo</h2></div>
+  <div class="rail">
+
+    <div class="day tk">
+      <div class="day-top"><span class="day-no">DAY 1 · MON OCT 19</span></div>
+      <h3>Arrive &amp; ease in</h3>
+      <ul class="stops">
+        <li><a href="https://www.google.com/maps/search/?api=1&query=Shibuya%20Scramble%20Crossing" target="_blank" rel="noopener"><svg class="pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg><span class="stop-txt"><b>Shibuya Crossing + Shibuya Sky</b><span class="note">Sunset views from the rooftop, then walk the world's busiest crossing.</span></span><span class="go">MAP ↗</span></a></li>
+        <li class="plain"><svg class="pin" viewBox="0 0 24 24" fill="currentColor" style="color:var(--line)"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/></svg><span class="stop-txt"><b>Ramen dinner · keep it light (jet lag)</b></span></li>
+      </ul>
+    </div>
+
+    <div class="day tk">
+      <div class="day-top"><span class="day-no">DAY 2 · TUE OCT 20</span></div>
+      <h3>Old town &amp; anime</h3>
+      <ul class="stops">
+        <li><a href="https://www.google.com/maps/search/?api=1&query=Senso-ji" target="_blank" rel="noopener"><svg class="pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg><span class="stop-txt"><b>Senso-ji &amp; Nakamise St</b><span class="note">Tokyo's oldest temple + a snack-stall street. Go early.</span></span><span class="go">MAP ↗</span></a></li>
+        <li><a href="https://www.google.com/maps/search/?api=1&query=Akihabara%20Electric%20Town" target="_blank" rel="noopener"><svg class="pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg><span class="stop-txt"><b>Akihabara</b><span class="note">Anime, figures, arcades, a maid café. Block out the afternoon.</span></span><span class="go">MAP ↗</span></a></li>
+      </ul>
+    </div>
+
+    <div class="day tk">
+      <div class="day-top"><span class="day-no">DAY 3 · WED OCT 21</span></div>
+      <h3>Shrine, shopping, lights</h3>
+      <ul class="stops">
+        <li><a href="https://www.google.com/maps/search/?api=1&query=Meiji%20Jingu" target="_blank" rel="noopener"><svg class="pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg><span class="stop-txt"><b>Meiji Shrine &amp; Yoyogi Park</b><span class="note">Calm forest shrine, right beside Harajuku.</span></span><span class="go">MAP ↗</span></a></li>
+        <li><a href="https://www.google.com/maps/search/?api=1&query=Takeshita%20Street%20Harajuku" target="_blank" rel="noopener"><svg class="pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg><span class="stop-txt"><b>Harajuku — Takeshita St &amp; Omotesando</b><span class="note">Quirky fashion, crepes, then upscale shopping.</span></span><span class="go">MAP ↗</span></a></li>
+        <li><a href="https://www.google.com/maps/search/?api=1&query=teamLab%20Planets%20Tokyo" target="_blank" rel="noopener"><svg class="pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg><span class="stop-txt"><b>teamLab Planets <i>or</i> Shinjuku by night</b><span class="note">Digital art, or Golden Gai &amp; Omoide Yokocho. Send luggage ahead tonight.</span></span><span class="go">MAP ↗</span></a></li>
+      </ul>
+    </div>
+
+    <div class="day tk trip">
+      <div class="day-top"><span class="day-no">DAY 4 · THU OCT 22</span><span class="tag trip">Day trip</span></div>
+      <h3>Mt. Fuji 🗻</h3>
+      <ul class="stops">
+        <li><a href="https://www.google.com/maps/search/?api=1&query=Busta%20Shinjuku" target="_blank" rel="noopener"><svg class="pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg><span class="stop-txt"><b>Busta Shinjuku → Kawaguchiko</b><span class="note">Early highway bus (~2 hrs). Book ahead; mornings are clearest.</span></span><span class="go">MAP ↗</span></a></li>
+        <li><a href="https://www.google.com/maps/search/?api=1&query=Chureito%20Pagoda" target="_blank" rel="noopener"><svg class="pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg><span class="stop-txt"><b>Chureito Pagoda</b><span class="note">The iconic pagoda-and-Fuji shot. ~398 stairs up.</span></span><span class="go">MAP ↗</span></a></li>
+        <li><a href="https://www.google.com/maps/search/?api=1&query=Oishi%20Park%20Kawaguchiko" target="_blank" rel="noopener"><svg class="pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg><span class="stop-txt"><b>Oishi Park (lakeside)</b><span class="note">Fuji across the lake. Bus back to Tokyo by evening.</span></span><span class="go">MAP ↗</span></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- KYOTO -->
+  <div class="sec-head" id="kyoto"><span class="eyebrow" style="color:var(--kyoto)">Days 5–8 · 京都</span><h2>Kyoto</h2></div>
+  <div class="rail">
+
+    <div class="day ky">
+      <div class="day-top"><span class="day-no">DAY 5 · FRI OCT 23</span><span class="tag travel">Travel</span></div>
+      <h3>Bullet train &amp; torii gates</h3>
+      <ul class="stops">
+        <li><a href="https://www.google.com/maps/search/?api=1&query=Tokyo%20Station" target="_blank" rel="noopener"><svg class="pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg><span class="stop-txt"><b>Shinkansen · Tokyo → Kyoto</b><span class="note">~2h15. Sit on the right for a Fuji glimpse. Check into Kyoto hotel.</span></span><span class="go">MAP ↗</span></a></li>
+        <li><a href="https://www.google.com/maps/search/?api=1&query=Fushimi%20Inari%20Taisha" target="_blank" rel="noopener"><svg class="pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg><span class="stop-txt"><b>Fushimi Inari at dusk</b><span class="note">Thousands of vermilion torii gates. Free, open late.</span></span><span class="go">MAP ↗</span></a></li>
+      </ul>
+    </div>
+
+    <div class="day ky">
+      <div class="day-top"><span class="day-no">DAY 6 · SAT OCT 24</span></div>
+      <h3>Gold, bamboo &amp; geisha lanes</h3>
+      <ul class="stops">
+        <li><a href="https://www.google.com/maps/search/?api=1&query=Kinkaku-ji" target="_blank" rel="noopener"><svg class="pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg><span class="stop-txt"><b>Kinkaku-ji (Golden Pavilion)</b><span class="note">Go early for the cleanest reflection.</span></span><span class="go">MAP ↗</span></a></li>
+        <li><a href="https://www.google.com/maps/search/?api=1&query=Arashiyama%20Bamboo%20Grove" target="_blank" rel="noopener"><svg class="pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg><span class="stop-txt"><b>Arashiyama Bamboo Grove</b><span class="note">Towering bamboo + riverside walk.</span></span><span class="go">MAP ↗</span></a></li>
+        <li><a href="https://www.google.com/maps/search/?api=1&query=Pontocho%20Kyoto" target="_blank" rel="noopener"><svg class="pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg><span class="stop-txt"><b>Gion &amp; Pontocho dinner</b><span class="note">Old geisha district; riverside dining alley.</span></span><span class="go">MAP ↗</span></a></li>
+      </ul>
+    </div>
+
+    <div class="day ky trip">
+      <div class="day-top"><span class="day-no">DAY 7 · SUN OCT 25</span><span class="tag trip">Day trip</span></div>
+      <h3>Nara — Buddha &amp; deer 🦌</h3>
+      <ul class="stops">
+        <li><a href="https://www.google.com/maps/search/?api=1&query=Todai-ji" target="_blank" rel="noopener"><svg class="pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg><span class="stop-txt"><b>Todai-ji</b><span class="note">~45 min from Kyoto. Giant bronze Buddha.</span></span><span class="go">MAP ↗</span></a></li>
+        <li><a href="https://www.google.com/maps/search/?api=1&query=Nara%20Park" target="_blank" rel="noopener"><svg class="pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg><span class="stop-txt"><b>Nara Park</b><span class="note">Bowing deer — buy crackers (cash). Back to Kyoto for dinner.</span></span><span class="go">MAP ↗</span></a></li>
+      </ul>
+    </div>
+
+    <div class="day ky">
+      <div class="day-top"><span class="day-no">DAY 8 · MON OCT 26</span></div>
+      <h3>Old Kyoto &amp; tea</h3>
+      <ul class="stops">
+        <li><a href="https://www.google.com/maps/search/?api=1&query=Kiyomizu-dera" target="_blank" rel="noopener"><svg class="pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg><span class="stop-txt"><b>Kiyomizu-dera + Higashiyama</b><span class="note">Hillside temple + the historic Ninenzaka / Sannenzaka lanes. Go early.</span></span><span class="go">MAP ↗</span></a></li>
+        <li><a href="https://www.google.com/maps/search/?api=1&query=Nishiki%20Market" target="_blank" rel="noopener"><svg class="pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg><span class="stop-txt"><b>Nishiki Market + a tea house</b><span class="note">"Kyoto's Kitchen" — graze, then a traditional tea experience.</span></span><span class="go">MAP ↗</span></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- OSAKA -->
+  <div class="sec-head" id="osaka"><span class="eyebrow" style="color:var(--osaka)">Days 9–10 · 大阪</span><h2>Osaka</h2></div>
+  <div class="rail">
+
+    <div class="day os">
+      <div class="day-top"><span class="day-no">DAY 9 · TUE OCT 27</span><span class="tag travel">Travel</span></div>
+      <h3>Move &amp; eat</h3>
+      <ul class="stops">
+        <li><a href="https://www.google.com/maps/search/?api=1&query=Dotonbori" target="_blank" rel="noopener"><svg class="pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg><span class="stop-txt"><b>Dotonbori</b><span class="note">~15-min train from Kyoto. Takoyaki, okonomiyaki, the Glico sign at night.</span></span><span class="go">MAP ↗</span></a></li>
+      </ul>
+    </div>
+
+    <div class="day os">
+      <div class="day-top"><span class="day-no">DAY 10 · WED OCT 28</span></div>
+      <h3>Castle, anime &amp; last bites</h3>
+      <ul class="stops">
+        <li><a href="https://www.google.com/maps/search/?api=1&query=Osaka%20Castle" target="_blank" rel="noopener"><svg class="pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg><span class="stop-txt"><b>Osaka Castle</b><span class="note">City views from the tower; free park grounds.</span></span><span class="go">MAP ↗</span></a></li>
+        <li><a href="https://www.google.com/maps/search/?api=1&query=Nipponbashi%20Denden%20Town" target="_blank" rel="noopener"><svg class="pin" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg><span class="stop-txt"><b>Den Den Town + Shinsaibashi</b><span class="note">Osaka's anime district + the shopping arcade. Soufflé pancakes!</span></span><span class="go">MAP ↗</span></a></li>
+      </ul>
+    </div>
+
+    <div class="day os">
+      <div class="day-top"><span class="day-no">THU OCT 29</span><span class="tag travel">Depart</span></div>
+      <h3>Fly to Delhi</h3>
+      <ul class="stops">
+        <li class="plain"><svg class="pin" viewBox="0 0 24 24" fill="currentColor" style="color:var(--line)"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/></svg><span class="stop-txt"><b>Check out → train to KIX (~50 min) → morning flight. Build in buffer.</b></span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- TIPS -->
+  <div class="sec-head"><span class="eyebrow">Good to know</span><h2>Trip notes</h2></div>
+  <div class="tips">
+    <div class="tip"><h4><span class="k">IC</span> Get a Suica or Pasmo</h4><p>Tap-and-go for every train and convenience store. Add the digital one to your phone wallet.</p></div>
+    <div class="tip"><h4><span class="k">山</span> Ride the Yamanote loop</h4><p>The JR loop connects Shibuya, Harajuku, Akihabara &amp; Tokyo Station. Stay near a stop on it.</p></div>
+    <div class="tip"><h4><span class="k">荷</span> Forward your luggage</h4><p>Use takkyubin courier to send big bags Tokyo → Kyoto, so the Fuji day is hands-free.</p></div>
+    <div class="tip"><h4><span class="k">予</span> Book ahead</h4><p>teamLab, the Kawaguchiko bus, and Kyoto hotels sell out for late October. Reserve early.</p></div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="seal">旅</div>
+  Tokyo · Kyoto · Osaka — October 2026<br>
+  <span class="mono" style="font-size:11px">Tap a place → open in Maps → Directions. いってらっしゃい</span>
+</footer>
+
+<script>
+  // active city in sticky nav + reveal-on-scroll
+  (function(){
+    var navLinks = {tokyo:document.querySelector('.nav .tk'),kyoto:document.querySelector('.nav .ky'),osaka:document.querySelector('.nav .os')};
+    var sections = ['tokyo','kyoto','osaka'].map(function(id){return document.getElementById(id);});
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if(!reduce && 'IntersectionObserver' in window){
+      var days = document.querySelectorAll('.day');
+      var io = new IntersectionObserver(function(es){
+        es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target);} });
+      },{threshold:.12});
+      days.forEach(function(d){io.observe(d);});
+    } else {
+      document.querySelectorAll('.day').forEach(function(d){d.classList.add('show');});
+    }
+
+    function onScroll(){
+      var pos = window.scrollY + 120, current = 'tokyo';
+      sections.forEach(function(s){ if(s && s.offsetTop <= pos) current = s.id; });
+      Object.keys(navLinks).forEach(function(k){ navLinks[k] && navLinks[k].classList.toggle('on', k===current); });
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+  })();
+</script>
+</body>
+</html>
