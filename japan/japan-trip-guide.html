@@ -116,11 +116,11 @@
 
   /* ---------- RAIL TIMELINE ---------- */
   .rail{position:relative;margin-top:10px;padding-left:34px}
-  .rail::before{content:"";position:absolute;left:9px;top:6px;bottom:30px;width:3px;border-radius:3px;
+  .rail::before{content:"";position:absolute;left:9px;top:6px;bottom:0;width:3px;border-radius:3px;
     background:linear-gradient(180deg,var(--tokyo) 0%,var(--tokyo) 33%,var(--kyoto) 42%,var(--kyoto) 72%,var(--osaka) 80%,var(--osaka) 100%)}
   .day{position:relative;padding:18px 0 8px;opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
   .day.show{opacity:1;transform:none}
-  .day::before{content:"";position:absolute;left:-30px;top:24px;width:15px;height:15px;border-radius:50%;
+  .day::before{content:"";position:absolute;left:-33px;top:24px;width:15px;height:15px;border-radius:50%;
     background:var(--washi);border:3px solid var(--tokyo)}
   .day.ky::before{border-color:var(--kyoto)} .day.os::before{border-color:var(--osaka)}
   .day.trip::before{background:var(--kyoto);border-color:var(--kyoto)}
