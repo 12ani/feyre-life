@@ -1,0 +1,172 @@
+/* ============================================================
+   Look and feel. Colours all live in one place, at the top —
+   change these six values and the whole page changes mood.
+
+   This card is monochrome on purpose: one green, used at many
+   strengths, the way the hand-drawn recipe cards use one pink.
+   ============================================================ */
+:root{
+  --sage:#E9EFE2;        /* page background */
+  --paper:#FCFDFA;       /* the card itself */
+  --ink:#1E2C1A;         /* text */
+  --ink-soft:#5D6D56;    /* quiet text */
+  --moss:#4B7A3C;        /* the one accent */
+  --moss-deep:#33562A;
+  --line:#C7D8BD;
+  --tint:rgba(75,122,60,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--sage);
+  color:var(--ink);
+  font-family:"Karla",system-ui,sans-serif;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  padding:26px 16px 50px;
+}
+.script{font-family:"Caveat",cursive;font-weight:700;line-height:1.05}
+.mono{font-family:"DM Mono",monospace}
+
+/* ---------- scalloped frame ----------
+   One 3x3 tile drawn as an SVG: a dot in each corner cell and a dot in
+   each edge cell. `border-image ... round` paints the four corner dots
+   exactly once and then fits a WHOLE number of dots along each edge, so
+   the rows and columns always meet cleanly no matter how tall the card
+   gets. (Four separately-tiled strips cannot do this — they collide at
+   the corners.)
+
+   Heads up: the dot colour lives inside the SVG below and can't read
+   var(--moss), so if you change the green, change it here too. */
+.frame{
+  max-width:940px;margin:0 auto;
+  border:22px solid transparent;
+  border-image-source:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='66' height='66'%3E%3Cg fill='%234B7A3C'%3E%3Ccircle cx='11' cy='11' r='5.5'/%3E%3Ccircle cx='33' cy='11' r='5.5'/%3E%3Ccircle cx='55' cy='11' r='5.5'/%3E%3Ccircle cx='11' cy='33' r='5.5'/%3E%3Ccircle cx='55' cy='33' r='5.5'/%3E%3Ccircle cx='11' cy='55' r='5.5'/%3E%3Ccircle cx='33' cy='55' r='5.5'/%3E%3Ccircle cx='55' cy='55' r='5.5'/%3E%3C/g%3E%3C/svg%3E");
+  border-image-slice:22;
+  border-image-repeat:round;
+}
+.sheet{
+  background:var(--paper);border:2px solid var(--moss);border-radius:10px;
+  padding:40px 44px 46px;position:relative;
+  margin:-8px;   /* tucks the inner edge of each dot behind the card */
+}
+
+/* ---------- recipe tabs (only when >1 recipe) ---------- */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:0 auto 16px;max-width:940px}
+.tab{
+  font-family:"Karla",sans-serif;font-size:13px;padding:8px 15px;border-radius:999px;
+  border:1.5px solid var(--moss);background:transparent;color:var(--moss-deep);cursor:pointer
+}
+.tab.on{background:var(--moss);color:#fff}
+
+/* ---------- hero ---------- */
+.hero{display:flex;gap:26px;align-items:flex-start;justify-content:space-between}
+.hero h1{font-size:clamp(40px,7vw,62px);color:var(--moss-deep);margin-bottom:6px}
+.hero .blurb{font-size:15.5px;color:var(--ink-soft);max-width:44ch}
+.hero-art{flex:none;width:205px;color:var(--moss);opacity:.9}
+.hero-art svg{width:100%;height:auto;display:block}
+
+/* ---------- facts strip ---------- */
+.facts{
+  display:flex;flex-wrap:wrap;gap:10px 30px;margin:24px 0 0;
+  background:var(--tint);border-radius:14px;padding:15px 20px
+}
+.facts div{min-width:88px}
+.facts .k{font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--moss-deep)}
+.facts .v{font-weight:700;font-size:15px}
+
+/* ---------- pan picker ---------- */
+.picker{margin-top:22px;padding-top:20px;border-top:1.5px dashed var(--line)}
+.picker-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.picker-head .label{font-family:"Caveat",cursive;font-weight:700;font-size:26px;color:var(--moss-deep)}
+.batch{
+  font-family:"DM Mono",monospace;font-size:12.5px;font-weight:500;color:#fff;
+  background:var(--moss);padding:3px 11px;border-radius:999px
+}
+.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.chips{display:flex;gap:7px;flex-wrap:wrap}
+.chip{
+  font-family:"DM Mono",monospace;font-size:13px;padding:8px 14px;border-radius:9px;
+  border:1.5px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;transition:.15s;
+  display:flex;flex-direction:column;align-items:center;line-height:1.25
+}
+.chip:hover{border-color:var(--moss)}
+.chip em{font-style:normal;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-top:1px}
+.chip.on{background:var(--moss);border-color:var(--moss);color:#fff}
+.chip.on em{color:rgba(255,255,255,.8)}
+.stepper{display:flex;align-items:center;border:1.5px solid var(--line);border-radius:9px;overflow:hidden}
+.stepper button{width:38px;height:40px;border:0;background:transparent;font-size:19px;cursor:pointer;color:var(--ink)}
+.stepper button:hover{background:var(--tint)}
+.stepper .count{font-family:"DM Mono",monospace;font-weight:500;padding:0 12px;text-align:center;min-width:64px}
+.stepper .count small{display:block;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.unit-toggle{display:flex;border:1.5px solid var(--line);border-radius:9px;overflow:hidden;margin-left:auto}
+.unit-toggle button{border:0;background:transparent;padding:9px 13px;font-family:"DM Mono",monospace;font-size:12px;color:var(--ink-soft);cursor:pointer}
+.unit-toggle button.on{background:var(--moss-deep);color:#fff}
+.pan-hint{margin-top:12px;font-size:14px;color:var(--ink-soft)}
+.pan-hint b{color:var(--ink)}
+.scaled-flag{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--moss);margin-left:6px}
+
+/* ---------- two columns ---------- */
+.cols{display:grid;grid-template-columns:0.85fr 1.15fr;gap:38px;margin-top:30px}
+h2.script{font-size:33px;color:var(--moss-deep);margin-bottom:10px}
+
+ul.ing{list-style:none}
+ul.ing li{display:flex;gap:11px;align-items:baseline;padding:8px 0;cursor:pointer}
+ul.ing li + li{border-top:1px solid rgba(199,216,189,.55)}
+ul.ing li .box{flex:none;width:13px;height:13px;border:1.5px solid var(--line);border-radius:50%;align-self:flex-start;margin-top:6px;position:relative}
+ul.ing li.done .box{background:var(--moss);border-color:var(--moss)}
+ul.ing li.done .amt,ul.ing li.done .name{opacity:.4;text-decoration:line-through}
+.amt{font-family:"DM Mono",monospace;font-weight:500;font-size:14px;white-space:nowrap;min-width:76px}
+.name{flex:1;font-size:15px}
+.name .alt{display:block;font-family:"DM Mono",monospace;font-size:11.5px;color:var(--ink-soft);margin-top:1px}
+.name .sub{color:var(--ink-soft);font-size:13.5px}
+
+/* the soft blob, borrowed from hand-drawn cards */
+.blob{
+  background:var(--tint);border-radius:20px;padding:18px 20px;margin-top:20px;font-size:14px;color:var(--ink-soft)
+}
+.blob b{display:block;font-family:"Caveat",cursive;font-weight:700;font-size:22px;color:var(--moss-deep);margin-bottom:2px}
+
+ol.steps{list-style:none;counter-reset:s}
+ol.steps li{counter-increment:s;display:flex;gap:13px;padding:11px 0;cursor:pointer}
+ol.steps li + li{border-top:1px solid rgba(199,216,189,.55)}
+ol.steps li:before{
+  content:counter(s);flex:none;width:25px;height:25px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:"DM Mono",monospace;font-size:12px;
+  border:1.5px solid var(--line);color:var(--ink-soft);transition:.15s
+}
+ol.steps li.done:before{background:var(--moss);border-color:var(--moss);color:#fff}
+ol.steps li.done .txt{opacity:.42}
+.txt{font-size:14.5px}
+.txt strong{font-family:"Caveat",cursive;font-weight:700;font-size:21px;color:var(--moss-deep);display:block;line-height:1.15}
+.progress{height:3px;background:var(--line);border-radius:3px;overflow:hidden;margin-top:14px}
+.progress i{display:block;height:100%;background:var(--moss);width:0;transition:width .25s}
+.progress-lbl{font-family:"DM Mono",monospace;font-size:11px;color:var(--ink-soft);margin-top:6px;display:flex;justify-content:space-between}
+.reset{border:0;background:none;color:var(--moss);font-family:"DM Mono",monospace;font-size:11px;cursor:pointer;text-decoration:underline}
+
+.extra{margin-top:26px;padding-top:18px;border-top:1.5px dashed var(--line)}
+.extra h3{font-family:"Caveat",cursive;font-weight:700;font-size:26px;color:var(--moss-deep);margin-bottom:4px}
+.extra ul{margin-left:17px;font-size:14px;color:var(--ink-soft)}
+.extra li{margin:4px 0}
+
+footer{text-align:center;margin-top:30px;padding-top:20px;border-top:1.5px dashed var(--line);color:var(--ink-soft);font-size:12.5px}
+.print{
+  display:inline-block;margin-top:9px;border:1.5px solid var(--moss);background:transparent;color:var(--moss-deep);
+  border-radius:999px;padding:8px 20px;font-family:"Karla",sans-serif;font-size:13px;cursor:pointer
+}
+.print:hover{background:var(--moss);color:#fff}
+
+@media (max-width:760px){
+  body{padding:14px 8px 40px}
+  .sheet{padding:26px 20px 30px}
+  .cols{grid-template-columns:1fr;gap:26px}
+  .hero{flex-direction:column-reverse;gap:6px}
+  .hero-art{width:130px;align-self:flex-end;margin-bottom:-10px}
+  .unit-toggle{margin-left:0}
+}
+@media print{
+  body{background:#fff;padding:0}
+  .frame{background:none;padding:0}
+  .sheet{border:0}
+  .tabs,.controls,.print,.progress,.progress-lbl,.batch{display:none}
+}
