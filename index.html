@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Feyre Life</title>
+<meta name="description" content="Recipes, trips, and things worth keeping.">
+
+<!-- how it looks when installed on a phone -->
+<meta name="theme-color" content="#F7F4ED">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Feyre">
+<link rel="manifest" href="app/manifest.webmanifest">
+<link rel="apple-touch-icon" href="app/icons/apple-touch-icon.png">
+<link rel="icon" href="app/icons/favicon-32.png" sizes="32x32">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Karla:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app/shell.css">
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="cover">
+    <img class="mark" src="app/icons/icon-192.png" alt="" width="64" height="64">
+    <h1 class="serif">Feyre&nbsp;Life</h1>
+    <p class="sub">Recipes · Trips · Keepsakes</p>
+    <div class="rule"></div>
+  </header>
+
+  <!-- One card per section. Each borrows the accent colour of the
+       thing it opens, so the shelf previews what's behind each door. -->
+  <nav class="shelf">
+
+    <a class="card" href="food/breads/index.html" style="--accent:var(--food)">
+      <span class="kicker">Kitchen</span>
+      <h2>Recipes</h2>
+      <p>Cards that resize themselves — pick a pan and every amount does the maths for you.</p>
+      <span class="count">1 category · 1 recipe</span>
+    </a>
+
+    <a class="card" href="trips/index.html" style="--accent:var(--trips)">
+      <span class="kicker">Away</span>
+      <h2>Trips</h2>
+      <p>Where I went, what it cost, and what I'd tell someone going next.</p>
+      <span class="count">1 trip</span>
+    </a>
+
+    <div class="card empty" style="--accent:var(--albums)">
+      <span class="kicker">Soon</span>
+      <h2>Albums</h2>
+      <p>Photographs from the trips — shared only with the people I choose.</p>
+      <span class="count">not yet</span>
+    </div>
+
+    <div class="card empty" style="--accent:var(--things)">
+      <span class="kicker">Soon</span>
+      <h2>Keepsakes</h2>
+      <p>The collected things — books, records, small favourites worth remembering.</p>
+      <span class="count">not yet</span>
+    </div>
+
+  </nav>
+
+  <p class="foot">Kept by Shivani</p>
+</div>
+
+<script src="app/app.js"></script>
+</body>
+</html>

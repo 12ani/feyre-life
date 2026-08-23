@@ -1,0 +1,156 @@
+/* ============================================================
+   The shell: the cover and contents page of the diary.
+
+   Deliberately quiet. Every section inside this app has its own
+   strong look — the recipe cards are moss green, the Japan guide
+   is washi paper and sumi ink — and the shell's job is to hold
+   them together without shouting over any of them, the way a
+   scrapbook binding holds pages that look nothing alike.
+
+   Each section gets ONE accent colour, set per-card below.
+   ============================================================ */
+:root{
+  --paper:#F7F4ED;        /* page background — warm, between washi and sage */
+  --card:#FFFDF8;         /* the cards */
+  --ink:#241F1A;          /* text */
+  --ink-soft:#6E6459;     /* quiet text */
+  --line:#E2DACB;         /* hairlines */
+  --gold:#C2862A;         /* the shell's own accent */
+
+  /* one per section — borrowed from each section's own palette */
+  --food:#4B7A3C;         /* the moss of the recipe cards */
+  --trips:#27506B;        /* the indigo of the Japan guide */
+  --albums:#9C5B7C;       /* plum — not used anywhere yet */
+  --things:#B06A3B;       /* terracotta — not used anywhere yet */
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Karla",system-ui,-apple-system,sans-serif;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  /* iPhone notch + home indicator, so the installed app isn't clipped */
+  padding:env(safe-area-inset-top) env(safe-area-inset-right)
+          env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+.serif{font-family:"Fraunces","Iowan Old Style",Georgia,serif}
+.mono{font-family:"DM Mono",ui-monospace,monospace}
+.wrap{max-width:720px;margin:0 auto;padding:0 22px}
+
+/* ---------- cover ---------- */
+.cover{padding:56px 0 30px;text-align:center}
+.mark{width:64px;height:64px;margin:0 auto 20px;display:block;border-radius:16px}
+.cover h1{
+  font-family:"Fraunces","Iowan Old Style",Georgia,serif;
+  font-weight:600;font-size:clamp(38px,10vw,54px);line-height:1.05;
+  letter-spacing:-.02em;font-variation-settings:"SOFT" 40,"WONK" 1;
+}
+.cover .sub{
+  font-family:"DM Mono",monospace;font-size:12px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--ink-soft);margin-top:14px;
+}
+.rule{
+  width:44px;height:4px;border-radius:2px;background:var(--gold);
+  margin:26px auto 0;opacity:.85;
+}
+
+/* ---------- the shelf of sections ---------- */
+.shelf{display:grid;gap:16px;padding:36px 0 20px}
+@media(min-width:620px){ .shelf{grid-template-columns:1fr 1fr} }
+
+.card{
+  --accent:var(--gold);
+  display:block;text-decoration:none;color:inherit;
+  background:var(--card);
+  border:1.5px solid var(--line);
+  border-left:5px solid var(--accent);
+  border-radius:12px;
+  padding:24px 24px 22px;
+  position:relative;
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.card:hover,.card:focus-visible{
+  transform:translateY(-3px);
+  box-shadow:0 10px 26px rgba(36,31,26,.09);
+  border-color:var(--accent);
+  outline:none;
+}
+.card .kicker{
+  font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--accent);font-weight:500;
+}
+.card h2{
+  font-family:"Fraunces",Georgia,serif;font-weight:600;
+  font-size:25px;line-height:1.15;margin:9px 0 7px;letter-spacing:-.01em;
+}
+.card p{font-size:14.5px;color:var(--ink-soft);margin:0}
+.card .count{
+  display:inline-block;margin-top:15px;
+  font-family:"DM Mono",monospace;font-size:11.5px;
+  color:var(--accent);border:1px solid currentColor;
+  border-radius:999px;padding:3px 11px;opacity:.9;
+}
+
+/* a section with nothing in it yet — present, but visibly waiting */
+.card.empty{
+  background:transparent;
+  border-style:dashed;
+  border-left-style:solid;
+}
+.card.empty h2{color:var(--ink-soft)}
+
+/* ---------- an index of things inside one section ---------- */
+.entries{list-style:none;display:grid;gap:12px;padding:8px 0 20px}
+.entry{
+  display:flex;align-items:baseline;gap:14px;
+  text-decoration:none;color:inherit;
+  background:var(--card);border:1.5px solid var(--line);
+  border-radius:10px;padding:16px 18px;
+  transition:border-color .18s ease, transform .18s ease;
+}
+.entry:hover,.entry:focus-visible{border-color:var(--accent,var(--gold));transform:translateX(3px);outline:none}
+.entry .name{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:18px}
+.entry .meta{font-family:"DM Mono",monospace;font-size:11.5px;color:var(--ink-soft);margin-left:auto}
+
+/* ---------- back link ---------- */
+.back{
+  display:inline-block;margin:30px 0 0;
+  font-family:"DM Mono",monospace;font-size:12px;letter-spacing:.06em;
+  color:var(--ink-soft);text-decoration:none;
+}
+.back:hover{color:var(--ink)}
+
+/* ---------- colophon ---------- */
+.foot{
+  text-align:center;padding:44px 0 60px;
+  font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-soft);opacity:.7;
+}
+
+/* ---------- "Add to Home Screen" hint (iPhone Safari only) ----------
+   iOS never offers to install a web app the way Android does, so the
+   app has to ask. Shown once; dismissing it is remembered. */
+.a2hs{
+  position:fixed;left:14px;right:14px;
+  bottom:calc(14px + env(safe-area-inset-bottom));
+  background:var(--ink);color:var(--paper);
+  border-radius:14px;padding:15px 17px;
+  display:flex;gap:13px;align-items:center;
+  box-shadow:0 12px 34px rgba(36,31,26,.3);
+  font-size:14px;line-height:1.45;z-index:50;
+  animation:rise .3s ease both;
+}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.a2hs b{font-weight:700}
+.a2hs .x{
+  margin-left:auto;flex:none;background:none;border:0;cursor:pointer;
+  color:var(--paper);opacity:.6;font-size:22px;line-height:1;padding:4px 6px;
+}
+.a2hs .x:hover{opacity:1}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
