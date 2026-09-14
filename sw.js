@@ -20,6 +20,7 @@ const PRECACHE = [
   "./app/app.js",
   "./app/manifest.webmanifest",
   "./app/icons/icon-192.png",
+  "./app/icons/mark.png",
   "./app/icons/apple-touch-icon.png",
   "./trips/index.html",
   "./food/breads/index.html",
