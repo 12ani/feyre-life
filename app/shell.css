@@ -42,7 +42,7 @@ body{
 
 /* ---------- cover ---------- */
 .cover{padding:56px 0 30px;text-align:center}
-.mark{width:112px;height:112px;margin:0 auto 16px;display:block;border-radius:24px}
+.mark{width:128px;height:auto;margin:0 auto 10px;display:block}
 .cover h1{
   font-family:"Fraunces","Iowan Old Style",Georgia,serif;
   font-weight:600;font-size:clamp(38px,10vw,54px);line-height:1.05;
