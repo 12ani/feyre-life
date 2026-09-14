@@ -27,7 +27,7 @@
 - Ramen dinner · keep it light (jet lag) 🍜 **~7:30 – 8:30 pm**
 
 ### Day 2 — Tue Oct 20 · Tokyo (teamLab + Asakusa + Akihabara)
-- teamLab Planets **~9:00 – 10:45 am** — Book the first morning slot. You wade through water, so wear shorts or roll-up trousers.
+- teamLab Planets **~9:00 – 10:45 am** — Booked ✓ Join the queue within the 30-min entry window on your ticket. You wade through water, so wear shorts or roll-up trousers.
 - Asakusa — Senso-ji & Nakamise St 🍡 **~11:30 am – 2:00 pm** — ~40 min from teamLab. Tokyo's old-town neighbourhood: the oldest temple, the snack-stall street, and lunch here.
 - Akihabara **~2:30 – 7:30 pm** — ~15 min on the Ginza line. GiGo & TAITO Station arcades, Super Potato (retro games), Radio Kaikan (anime & figures), a maid café. Dinner here — best once the lights come on.
 
@@ -99,7 +99,7 @@
 
 **~1–2 months before:**
 - [ ] Shinkansen seat reservation (Tokyo → Kyoto, Day 5 — early afternoon, after Ginza)
-- [ ] teamLab tickets for the first morning slot on Tue Oct 20 (sell out — also check their calendar for closed days)
+- [x] teamLab Planets tickets for the morning of Tue Oct 20 — booked
 - [ ] Kawaguchiko highway bus (Day 4) — reserve in autumn
 
 **A few weeks before:**

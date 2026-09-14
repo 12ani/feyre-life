@@ -8,7 +8,7 @@
    Bump CACHE when you change what's in PRECACHE, otherwise phones
    keep serving the old copy.
    ============================================================ */
-const CACHE = "feyre-v2";
+const CACHE = "feyre-v3";
 
 /* The shell: the few files that must be there for the app to open
    at all with no signal. Paths are relative so this works both at
@@ -34,7 +34,9 @@ self.addEventListener("install", e => {
     caches.open(CACHE)
       // addAll is all-or-nothing; one 404 would throw the whole install
       // away, so each file is added on its own and allowed to fail.
-      .then(c => Promise.all(PRECACHE.map(u => c.add(u).catch(() => {}))))
+      // cache: "reload" skips the browser's HTTP cache, so a new version
+      // never precaches the old files it is meant to replace.
+      .then(c => Promise.all(PRECACHE.map(u => c.add(new Request(u, { cache: "reload" })).catch(() => {}))))
       .then(() => self.skipWaiting())
   );
 });
