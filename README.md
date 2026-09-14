@@ -24,7 +24,7 @@ feyre-life/
 │   └── breads/             sourdough focaccia
 └── trips/              ← trips
     ├── index.html          the list of trips
-    └── japan/              guide · spend tracker · original notes
+    └── japan/              guide · original notes
 ```
 
 ## The one design rule
