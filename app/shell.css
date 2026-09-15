@@ -29,6 +29,10 @@
   --trips:#4F6B7D;        /* the indigo of the Japan guide, greyed toward Cool Steel */
   --albums:#8E5B72;       /* plum — not used anywhere yet */
   --things:#9A6545;       /* terracotta — not used anywhere yet */
+
+  /* the four-point sparkle from the palette card, used as a mask so it
+     can take any colour: under each title, and before each card's label */
+  --sparkle:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 0c.9 7.2 4.8 11.1 12 12-7.2.9-11.1 4.8-12 12-.9-7.2-4.8-11.1-12-12 7.2-.9 11.1-4.8 12-12z'/%3E%3C/svg%3E");
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -63,9 +67,27 @@ body{
   font-family:"DM Mono",monospace;font-size:12px;letter-spacing:.2em;
   text-transform:uppercase;color:var(--ink-soft);margin-top:14px;
 }
+/* a sparkle between two fine lines, in the page's accent: Old Rose on
+   the front door, the section's own colour on Trips and Recipes */
 .rule{
-  width:44px;height:4px;border-radius:2px;background:var(--gold);
-  margin:26px auto 0;opacity:.85;
+  position:relative;width:148px;height:16px;margin:22px auto 0;
+  color:var(--accent,var(--gold));
+}
+.rule::before{
+  content:"";position:absolute;left:0;right:0;top:50%;height:1px;
+  background:linear-gradient(90deg,
+    transparent 0, currentColor 24%, currentColor 40%, transparent 43%,
+    transparent 57%, currentColor 60%, currentColor 76%, transparent 100%);
+  opacity:.55;
+}
+.rule::after,.card .kicker::before{
+  content:"";background:currentColor;
+  -webkit-mask:var(--sparkle) center/contain no-repeat;
+          mask:var(--sparkle) center/contain no-repeat;
+}
+.rule::after{
+  position:absolute;left:50%;top:50%;width:15px;height:15px;
+  transform:translate(-50%,-50%);
 }
 
 /* ---------- the shelf of sections ---------- */
@@ -92,6 +114,9 @@ body{
 .card .kicker{
   font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.18em;
   text-transform:uppercase;color:var(--accent);font-weight:500;
+}
+.card .kicker::before{
+  display:inline-block;width:9px;height:9px;margin-right:7px;vertical-align:-.5px;
 }
 .card h2{
   font-family:"Fraunces",Georgia,serif;font-weight:600;
