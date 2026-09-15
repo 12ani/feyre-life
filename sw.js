@@ -23,8 +23,11 @@ const PRECACHE = [
   "./app/icons/mark.png",
   "./app/icons/apple-touch-icon.png",
   "./trips/index.html",
+  "./food/index.html",
   "./food/breads/index.html",
   "./food/breads/breads.js",
+  "./food/cakes/index.html",
+  "./food/cakes/cakes.js",
   "./food/shared/card.css",
   "./food/shared/card.js"
 ];

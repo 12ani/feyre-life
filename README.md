@@ -20,8 +20,10 @@ feyre-life/
 │   ├── manifest.webmanifest  name, colours and icons of the installed app
 │   └── icons/              the home-screen icon, in every size iOS/Android want
 ├── food/               ← recipes  (has its own README)
+│   ├── index.html          the list of recipes
 │   ├── shared/             the scaling engine
-│   └── breads/             sourdough focaccia
+│   ├── breads/             sourdough focaccia
+│   └── cakes/              castella cake
 └── trips/              ← trips
     ├── index.html          the list of trips
     └── japan/              guide · original notes
