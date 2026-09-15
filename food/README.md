@@ -3,21 +3,26 @@
 Recipe cards you can resize. Open a category's `index.html` in a browser, pick a
 pan (or a serving count), and every amount rescales itself.
 
-Right now there's one category and one recipe in it:
-**[breads/index.html](breads/index.html)** → Sourdough Focaccia.
+**[index.html](index.html)** lists every recipe. Right now there are two categories:
+**[breads/](breads/index.html)** → Sourdough Focaccia, and **[cakes/](cakes/index.html)** → Castella Cake.
 
 ## Folder structure
 
 ```
 food/
 ├── README.md            ← you are here
+├── index.html           ← the list of recipes, linked from the front door
 ├── shared/              ← the engine, used by every category
 │   ├── card.css             how the cards look
-│   └── card.js              the maths and the drawing
-└── breads/              ← one folder per category of food
-    ├── index.html           open this in a browser
-    ├── breads.js            ★ the bread recipes — your file
-    └── sourdough-focaccia.md    the original handwritten notes
+│   └── card.js              the maths and the drawings
+├── breads/              ← one folder per category of food
+│   ├── index.html           open this in a browser
+│   ├── breads.js            ★ the bread recipes — your file
+│   └── sourdough-focaccia.md    the original handwritten notes
+└── cakes/
+    ├── index.html
+    ├── cakes.js             ★ the cake recipes
+    └── castella-cake.md     the original recipe notes
 ```
 
 The split that matters: **`shared/` is machinery, category folders are food.**
@@ -64,7 +69,8 @@ need. A number of servings would be made up.
 
 Copy the `breads/` folder, rename it (`desserts/`, `curries/`), rename the data
 file inside to match, and update the one `<script src="...">` line in its
-`index.html` to point at the new name. The `../shared/` paths stay exactly as
+`index.html` to point at the new name. Then add a line for it to `food/index.html`
+so it shows up in the list. The `../shared/` paths stay exactly as
 they are — that's the whole point of keeping the engine in one place.
 
 ## Changing the colours
@@ -95,3 +101,13 @@ Start in `shared/card.js` at `render()`. Notice that every click just changes a
 value in `state` and calls `render()` again, redrawing the entire card from
 scratch. Nothing updates the page piece by piece. That one idea is most of what
 React and friends are built on, and it's why nothing can get out of sync.
+
+## Counting eggs, and the extras a recipe can set
+
+Eggs are counted, not weighed, so an ingredient can use `each` (grams per piece)
+instead of `gPerCup`. `{ g: 72, each: 18, eachLabel: "large", name: "egg yolks" }`
+reads "4 large egg yolks" and rescales to the nearest half egg.
+
+- `mixName: "batter"` — the word the card uses when it rescales ("dough" by default).
+- The drawing at the top is chosen by the recipe's `slug` in `shared/card.js`
+  (the `ART` list). A recipe without a drawing just shows none.
