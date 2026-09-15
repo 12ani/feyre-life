@@ -75,14 +75,14 @@ they are — that's the whole point of keeping the engine in one place.
 
 ## Changing the colours
 
-The whole card is one green used at different strengths, the way hand-drawn
-recipe cards use one pink. Every colour is defined in the first ten lines of
+The whole card is one green — soft matcha and pistachio — used at different
+strengths, the way hand-drawn recipe cards use one pink. Every colour is defined in the first ten lines of
 `shared/card.css`, under `:root`. Change `--moss` and `--sage` and the page
 follows — chips, checkmarks, headings, the drawing.
 
 One exception: the scalloped border is a small SVG written directly into the
 `.frame` rule, and an SVG in a `url()` can't read a CSS variable. Its green is
-spelled out there as `%234B7A3C` (that's `#4B7A3C` with the `#` escaped). If you
+spelled out there as `%23A9C47E` (that's `#A9C47E` with the `#` escaped). If you
 change the green, change that one too — there's a comment above it saying so.
 
 A category can have its own colours without touching the others: `cakes/`

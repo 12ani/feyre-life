@@ -4,17 +4,20 @@
 
    This card is monochrome on purpose: one green, used at many
    strengths, the way the hand-drawn recipe cards use one pink.
+   The default green is soft matcha and pistachio.
    ============================================================ */
 :root{
-  --sage:#E9EFE2;        /* page background */
-  --paper:#FCFDFA;       /* the card itself */
-  --ink:#1E2C1A;         /* text */
-  --ink-soft:#5D6D56;    /* quiet text */
-  --moss:#4B7A3C;        /* the one accent */
-  --moss-deep:#33562A;
-  --line:#C7D8BD;
-  --tint:rgba(75,122,60,.10);
-  --line-soft:rgba(199,216,189,.55);   /* the faint rules between list rows */
+  --sage:#EFF3E2;        /* page background — matcha cream */
+  --paper:#FDFEF7;       /* the card itself */
+  --ink:#2E3B20;         /* text */
+  --ink-soft:#626C55;    /* quiet text */
+  --moss:#9DBB6E;        /* the one accent — pistachio, for fills and borders */
+  --moss-deep:#587538;   /* matcha — headings and anything small that must read */
+  --on-accent:#2E3B20;   /* text sitting on a --moss fill (pistachio is too light for white) */
+  --art:#7E9E55;         /* the line drawing */
+  --line:#D8E2C3;
+  --tint:rgba(157,187,110,.16);
+  --line-soft:rgba(216,226,195,.6);    /* the faint rules between list rows */
 }
 
 /* A category can wear its own colour: put a theme class on <body> and
@@ -31,6 +34,8 @@
   --line:#EBD9A0;
   --tint:rgba(232,186,64,.16);
   --line-soft:rgba(235,217,160,.6);
+  --on-accent:#fff;
+  --art:var(--moss);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
@@ -58,7 +63,7 @@ body{
 .frame{
   max-width:940px;margin:0 auto;
   border:22px solid transparent;
-  border-image-source:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='66' height='66'%3E%3Cg fill='%234B7A3C'%3E%3Ccircle cx='11' cy='11' r='5.5'/%3E%3Ccircle cx='33' cy='11' r='5.5'/%3E%3Ccircle cx='55' cy='11' r='5.5'/%3E%3Ccircle cx='11' cy='33' r='5.5'/%3E%3Ccircle cx='55' cy='33' r='5.5'/%3E%3Ccircle cx='11' cy='55' r='5.5'/%3E%3Ccircle cx='33' cy='55' r='5.5'/%3E%3Ccircle cx='55' cy='55' r='5.5'/%3E%3C/g%3E%3C/svg%3E");
+  border-image-source:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='66' height='66'%3E%3Cg fill='%23A9C47E'%3E%3Ccircle cx='11' cy='11' r='5.5'/%3E%3Ccircle cx='33' cy='11' r='5.5'/%3E%3Ccircle cx='55' cy='11' r='5.5'/%3E%3Ccircle cx='11' cy='33' r='5.5'/%3E%3Ccircle cx='55' cy='33' r='5.5'/%3E%3Ccircle cx='11' cy='55' r='5.5'/%3E%3Ccircle cx='33' cy='55' r='5.5'/%3E%3Ccircle cx='55' cy='55' r='5.5'/%3E%3C/g%3E%3C/svg%3E");
   border-image-slice:22;
   border-image-repeat:round;
 }
@@ -78,13 +83,13 @@ body{
   font-family:"Karla",sans-serif;font-size:13px;padding:8px 15px;border-radius:999px;
   border:1.5px solid var(--moss);background:transparent;color:var(--moss-deep);cursor:pointer
 }
-.tab.on{background:var(--moss);color:#fff}
+.tab.on{background:var(--moss);color:var(--on-accent)}
 
 /* ---------- hero ---------- */
 .hero{display:flex;gap:26px;align-items:flex-start;justify-content:space-between}
 .hero h1{font-size:clamp(40px,7vw,62px);color:var(--moss-deep);margin-bottom:6px}
 .hero .blurb{font-size:15.5px;color:var(--ink-soft);max-width:44ch}
-.hero-art{flex:none;width:205px;color:var(--moss);opacity:.9}
+.hero-art{flex:none;width:205px;color:var(--art);opacity:.9}
 .hero-art svg{width:100%;height:auto;display:block}
 
 /* ---------- facts strip ---------- */
@@ -101,7 +106,7 @@ body{
 .picker-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:12px}
 .picker-head .label{font-family:"Caveat",cursive;font-weight:700;font-size:26px;color:var(--moss-deep)}
 .batch{
-  font-family:"DM Mono",monospace;font-size:12.5px;font-weight:500;color:#fff;
+  font-family:"DM Mono",monospace;font-size:12.5px;font-weight:500;color:var(--on-accent);
   background:var(--moss);padding:3px 11px;border-radius:999px
 }
 .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
@@ -113,8 +118,8 @@ body{
 }
 .chip:hover{border-color:var(--moss)}
 .chip em{font-style:normal;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-top:1px}
-.chip.on{background:var(--moss);border-color:var(--moss);color:#fff}
-.chip.on em{color:rgba(255,255,255,.8)}
+.chip.on{background:var(--moss);border-color:var(--moss);color:var(--on-accent)}
+.chip.on em{color:inherit;opacity:.8}
 .stepper{display:flex;align-items:center;border:1.5px solid var(--line);border-radius:9px;overflow:hidden}
 .stepper button{width:38px;height:40px;border:0;background:transparent;font-size:19px;cursor:pointer;color:var(--ink)}
 .stepper button:hover{background:var(--tint)}
@@ -122,10 +127,10 @@ body{
 .stepper .count small{display:block;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
 .unit-toggle{display:flex;border:1.5px solid var(--line);border-radius:9px;overflow:hidden;margin-left:auto}
 .unit-toggle button{border:0;background:transparent;padding:9px 13px;font-family:"DM Mono",monospace;font-size:12px;color:var(--ink-soft);cursor:pointer}
-.unit-toggle button.on{background:var(--moss-deep);color:#fff}
+.unit-toggle button.on{background:var(--moss);color:var(--on-accent)}
 .pan-hint{margin-top:12px;font-size:14px;color:var(--ink-soft)}
 .pan-hint b{color:var(--ink)}
-.scaled-flag{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--moss);margin-left:6px}
+.scaled-flag{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--moss-deep);margin-left:6px}
 
 /* ---------- two columns ---------- */
 .cols{display:grid;grid-template-columns:0.85fr 1.15fr;gap:38px;margin-top:30px}
@@ -157,14 +162,14 @@ ol.steps li:before{
   font-family:"DM Mono",monospace;font-size:12px;
   border:1.5px solid var(--line);color:var(--ink-soft);transition:.15s
 }
-ol.steps li.done:before{background:var(--moss);border-color:var(--moss);color:#fff}
+ol.steps li.done:before{background:var(--moss);border-color:var(--moss);color:var(--on-accent)}
 ol.steps li.done .txt{opacity:.42}
 .txt{font-size:14.5px}
 .txt strong{font-family:"Caveat",cursive;font-weight:700;font-size:21px;color:var(--moss-deep);display:block;line-height:1.15}
 .progress{height:3px;background:var(--line);border-radius:3px;overflow:hidden;margin-top:14px}
 .progress i{display:block;height:100%;background:var(--moss);width:0;transition:width .25s}
 .progress-lbl{font-family:"DM Mono",monospace;font-size:11px;color:var(--ink-soft);margin-top:6px;display:flex;justify-content:space-between}
-.reset{border:0;background:none;color:var(--moss);font-family:"DM Mono",monospace;font-size:11px;cursor:pointer;text-decoration:underline}
+.reset{border:0;background:none;color:var(--moss-deep);font-family:"DM Mono",monospace;font-size:11px;cursor:pointer;text-decoration:underline}
 
 .extra{margin-top:26px;padding-top:18px;border-top:1.5px dashed var(--line)}
 .extra h3{font-family:"Caveat",cursive;font-weight:700;font-size:26px;color:var(--moss-deep);margin-bottom:4px}
@@ -176,7 +181,7 @@ footer{text-align:center;margin-top:30px;padding-top:20px;border-top:1.5px dashe
   display:inline-block;margin-top:9px;border:1.5px solid var(--moss);background:transparent;color:var(--moss-deep);
   border-radius:999px;padding:8px 20px;font-family:"Karla",sans-serif;font-size:13px;cursor:pointer
 }
-.print:hover{background:var(--moss);color:#fff}
+.print:hover{background:var(--moss);color:var(--on-accent)}
 
 @media (max-width:760px){
   body{padding:14px 8px 40px}
