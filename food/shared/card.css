@@ -14,6 +14,23 @@
   --moss-deep:#33562A;
   --line:#C7D8BD;
   --tint:rgba(75,122,60,.10);
+  --line-soft:rgba(199,216,189,.55);   /* the faint rules between list rows */
+}
+
+/* A category can wear its own colour: put a theme class on <body> and
+   redefine the same variables. cakes/ uses .theme-butter — castella
+   gold, one yellow at many strengths. (Its frame dots are set further
+   down, next to .frame.) */
+.theme-butter{
+  --sage:#FAF1D2;        /* page background — butter */
+  --paper:#FFFCF2;       /* the card — pale crumb */
+  --ink:#3A2A10;         /* text — dark crust */
+  --ink-soft:#725C36;
+  --moss:#9C6B0E;        /* the accent — golden brown, dark enough for white text */
+  --moss-deep:#6E4A0B;
+  --line:#EBD9A0;
+  --tint:rgba(232,186,64,.16);
+  --line-soft:rgba(235,217,160,.6);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
@@ -36,13 +53,18 @@ body{
    the corners.)
 
    Heads up: the dot colour lives inside the SVG below and can't read
-   var(--moss), so if you change the green, change it here too. */
+   var(--moss), so if you change the green, change it here too — and
+   the themed copies (like .theme-butter .frame) have their own. */
 .frame{
   max-width:940px;margin:0 auto;
   border:22px solid transparent;
   border-image-source:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='66' height='66'%3E%3Cg fill='%234B7A3C'%3E%3Ccircle cx='11' cy='11' r='5.5'/%3E%3Ccircle cx='33' cy='11' r='5.5'/%3E%3Ccircle cx='55' cy='11' r='5.5'/%3E%3Ccircle cx='11' cy='33' r='5.5'/%3E%3Ccircle cx='55' cy='33' r='5.5'/%3E%3Ccircle cx='11' cy='55' r='5.5'/%3E%3Ccircle cx='33' cy='55' r='5.5'/%3E%3Ccircle cx='55' cy='55' r='5.5'/%3E%3C/g%3E%3C/svg%3E");
   border-image-slice:22;
   border-image-repeat:round;
+}
+/* the butter theme's dots, in mustard (same SVG, different fill) */
+.theme-butter .frame{
+  border-image-source:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='66' height='66'%3E%3Cg fill='%23DDA93A'%3E%3Ccircle cx='11' cy='11' r='5.5'/%3E%3Ccircle cx='33' cy='11' r='5.5'/%3E%3Ccircle cx='55' cy='11' r='5.5'/%3E%3Ccircle cx='11' cy='33' r='5.5'/%3E%3Ccircle cx='55' cy='33' r='5.5'/%3E%3Ccircle cx='11' cy='55' r='5.5'/%3E%3Ccircle cx='33' cy='55' r='5.5'/%3E%3Ccircle cx='55' cy='55' r='5.5'/%3E%3C/g%3E%3C/svg%3E");
 }
 .sheet{
   background:var(--paper);border:2px solid var(--moss);border-radius:10px;
@@ -111,7 +133,7 @@ h2.script{font-size:33px;color:var(--moss-deep);margin-bottom:10px}
 
 ul.ing{list-style:none}
 ul.ing li{display:flex;gap:11px;align-items:baseline;padding:8px 0;cursor:pointer}
-ul.ing li + li{border-top:1px solid rgba(199,216,189,.55)}
+ul.ing li + li{border-top:1px solid var(--line-soft)}
 ul.ing li .box{flex:none;width:13px;height:13px;border:1.5px solid var(--line);border-radius:50%;align-self:flex-start;margin-top:6px;position:relative}
 ul.ing li.done .box{background:var(--moss);border-color:var(--moss)}
 ul.ing li.done .amt,ul.ing li.done .name{opacity:.4;text-decoration:line-through}
@@ -128,7 +150,7 @@ ul.ing li.done .amt,ul.ing li.done .name{opacity:.4;text-decoration:line-through
 
 ol.steps{list-style:none;counter-reset:s}
 ol.steps li{counter-increment:s;display:flex;gap:13px;padding:11px 0;cursor:pointer}
-ol.steps li + li{border-top:1px solid rgba(199,216,189,.55)}
+ol.steps li + li{border-top:1px solid var(--line-soft)}
 ol.steps li:before{
   content:counter(s);flex:none;width:25px;height:25px;border-radius:50%;
   display:flex;align-items:center;justify-content:center;

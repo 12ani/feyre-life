@@ -85,6 +85,11 @@ One exception: the scalloped border is a small SVG written directly into the
 spelled out there as `%234B7A3C` (that's `#4B7A3C` with the `#` escaped). If you
 change the green, change that one too — there's a comment above it saying so.
 
+A category can have its own colours without touching the others: `cakes/`
+puts `class="theme-butter"` on its `<body>`, and `.theme-butter` near the top of
+`card.css` redefines the same variables in shades of yellow (plus its own copy
+of the frame dots). Copy that block to make another theme.
+
 ## Why three languages
 
 - **HTML** — structure. What exists on the page.
