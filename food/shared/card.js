@@ -48,6 +48,7 @@ function fmtGrams(g) {
 function fmtVolume(grams, gPerCup) {
   if (!gPerCup) return "";
   let tsp = grams / gPerCup * 48;
+  if (tsp < 0.2) return "a pinch";   // under ~⅕ tsp, rounding up to ¼ would overstate it
   tsp = tsp >= 12 ? Math.round(tsp * 2) / 2 : Math.round(tsp * 4) / 4;
   if (tsp < 0.25) return "a pinch";
 
@@ -73,6 +74,13 @@ function fmtVolume(grams, gPerCup) {
   if (rem >= 0.25) parts.push(fmtFrac(rem) + " tsp");
 
   return parts.join(" + ");
+}
+
+/* grams -> "4 large" for things you count rather than weigh (eggs),
+   rounded to the nearest half so it stays something you can crack */
+function fmtCount(grams, each, label) {
+  const n = Math.max(0.5, Math.round(grams / each * 2) / 2);
+  return fmtFrac(n) + (label ? " " + label : "");
 }
 
 /* rescale any {{grams}} written inside a note */
@@ -119,8 +127,9 @@ function renderTabs() {
   });
 }
 
-/* a little line drawing — a dimpled slab with rosemary,
-   drawn in whatever colour the page is using */
+/* little line drawings, one per recipe (matched by slug), drawn in
+   whatever colour the page is using. A recipe without one just
+   shows no picture. */
 const FOCACCIA_ART = `
 <svg viewBox="0 0 240 200" fill="none" stroke="currentColor"
      stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -148,17 +157,51 @@ const FOCACCIA_ART = `
   </g>
 </svg>`;
 
+/* a tall castella block with a slice cut off, wobbling */
+const CASTELLA_ART = `
+<svg viewBox="0 0 240 200" fill="none" stroke="currentColor"
+     stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <!-- the block: top, front, side -->
+  <path d="M40 78c10-7 20-14 32-20 36-1 72-1 108 0-10 7-20 14-31 20-36 1-73 1-109 0z"/>
+  <path d="M40 78c-1 30-1 58 1 86 36 2 72 2 108 0 2-28 2-56 0-86"/>
+  <path d="M149 78c11-6 21-13 31-20 1 28 1 56-1 84-10 8-20 15-30 22"/>
+  <!-- the brown top crust -->
+  <path d="M41 92c36 2 72 2 108 0M149 92c10-6 20-13 30-20" stroke-width="1.8"/>
+  <!-- the slice, leaning off to the right -->
+  <path d="M170 116c4-4 9-8 14-11 12-1 24-2 36-2-4 4-9 8-14 11-12 1-24 1-36 2z"/>
+  <path d="M170 116c0 18 1 36 3 54 12 0 23-1 35-2-2-18-3-36-2-54"/>
+  <path d="M206 114c5-3 9-7 14-11 1 18 2 36 3 54-5 4-10 7-15 11"/>
+  <path d="M171 126c12-1 24-1 35-2" stroke-width="1.8"/>
+  <!-- airy crumb -->
+  <g stroke-width="1.6">
+    <circle cx="62" cy="116" r="2.2"/><circle cx="90" cy="130" r="1.8"/><circle cx="118" cy="112" r="2"/>
+    <circle cx="74" cy="148" r="1.8"/><circle cx="128" cy="146" r="2.2"/><circle cx="104" cy="156" r="1.6"/>
+    <circle cx="184" cy="142" r="1.8"/><circle cx="196" cy="156" r="1.6"/>
+  </g>
+  <!-- the jiggle -->
+  <g stroke-width="1.8">
+    <path d="M26 100c-6 10-6 24 0 34M16 108c-4 7-4 15 0 20"/>
+    <path d="M94 44c4-3 8-3 12 0s8 3 12 0"/>
+  </g>
+</svg>`;
+
+const ART = {
+  "sourdough-focaccia": FOCACCIA_ART,
+  "castella-cake": CASTELLA_ART
+};
+
 function render() {
   const r = RECIPES[state.index];
   const byPan = r.scaleBy === "pan";
   const pan = byPan ? r.pans[state.size] : null;
   const scale = byPan ? pan.area / r.basePan.area : state.size / r.baseServings;
   const scaled = Math.abs(scale - 1) > 0.005;
+  const mix = r.mixName || "dough";   // "dough" for bread, "batter" for cake
 
   const ings = r.ingredients.map((ing, i) => {
     const g = ing.g * scale;
     const gTxt = fmtGrams(g);
-    const vTxt = fmtVolume(g, ing.gPerCup);
+    const vTxt = ing.each ? fmtCount(g, ing.each, ing.eachLabel) : fmtVolume(g, ing.gPerCup);
     const primary = state.unit === "g" ? gTxt : vTxt;
     const secondary = state.unit === "g" ? vTxt : gTxt;
     return `<li class="${state.doneIng.has(i) ? "done" : ""}" data-i="${i}">
@@ -193,7 +236,7 @@ function render() {
         <h1 class="script">${r.title}</h1>
         <p class="blurb">${r.blurb}</p>
       </div>
-      <div class="hero-art">${FOCACCIA_ART}</div>
+      <div class="hero-art">${ART[r.slug] || ""}</div>
     </div>
 
     <div class="facts">
@@ -204,7 +247,7 @@ function render() {
     <div class="picker">
       <div class="picker-head">
         <span class="label">${byPan ? "Pick your pan" : "How many servings?"}</span>
-        <span class="batch">dough ×${Math.round(scale * 100) / 100}</span>
+        <span class="batch">${mix} ×${Math.round(scale * 100) / 100}</span>
       </div>
       <div class="controls">
         ${byPan ? "" : `<div class="stepper">
@@ -220,7 +263,7 @@ function render() {
       </div>
       <p class="pan-hint">
         ${scaled
-          ? `Dough <b>${scale < 1 ? "scaled down" : "scaled up"} ×${Math.round(scale * 100) / 100}</b> to fill <b>${pan ? withArticle(pan.full) : ""}</b> at the same depth as the original — so <b>${r.bakeNote || "the bake time holds"}</b>.<span class="scaled-flag">adjusted</span>`
+          ? `${mix[0].toUpperCase() + mix.slice(1)} <b>${scale < 1 ? "scaled down" : "scaled up"} ×${Math.round(scale * 100) / 100}</b> to fill <b>${pan ? withArticle(pan.full) : ""}</b> at the same depth as the original — so <b>${r.bakeNote || "the bake time holds"}</b>.<span class="scaled-flag">adjusted</span>`
           : `The original batch, sized for <b>${pan ? withArticle(pan.full) : ""}</b>.`}
       </p>
     </div>
