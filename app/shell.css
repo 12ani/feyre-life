@@ -57,7 +57,8 @@ body{
 
 /* ---------- cover ---------- */
 .cover{padding:56px 0 30px;text-align:center}
-.mark{width:128px;height:auto;margin:0 auto 10px;display:block}
+/* the character peeks over the title: its flat bottom edge sits right on the letters */
+.mark{width:150px;height:auto;margin:0 auto -4px;display:block;position:relative;z-index:1}
 .cover h1{
   font-family:"Fraunces","Iowan Old Style",Georgia,serif;
   font-weight:600;font-size:clamp(38px,10vw,54px);line-height:1.05;
