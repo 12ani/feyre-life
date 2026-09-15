@@ -8,26 +8,37 @@
    scrapbook binding holds pages that look nothing alike.
 
    Each section gets ONE accent colour, set per-card below.
+
+   The shell's colours come from one blush palette, used quietly:
+   Soft Blush only as a glow behind the cover, Taupe Grey for ink,
+   Old Rose for small decoration, and a near-white paper so the
+   pages stay calm to read.
    ============================================================ */
 :root{
-  --paper:#F7F4ED;        /* page background — warm, between washi and sage */
-  --card:#FFFDF8;         /* the cards */
-  --ink:#241F1A;          /* text */
-  --ink-soft:#6E6459;     /* quiet text */
-  --line:#E2DACB;         /* hairlines */
-  --gold:#C2862A;         /* the shell's own accent */
+  --paper:#F8F3F2;        /* page background — warm off-white with a whisper of blush */
+  --blush:#FFDBDA;        /* Soft Blush — the glow at the top of every shell page */
+  --card:#FFFDFC;         /* the cards */
+  --ink:#604D53;          /* text — Taupe Grey, no pure black */
+  --ink-soft:#78646A;     /* quiet text — a lighter taupe, still readable */
+  --line:#E9DEE0;         /* hairlines — Pale Slate, lightened */
+  --gold:#DB7F8E;         /* the shell's own accent — Old Rose (decoration only, too light for text) */
 
-  /* one per section — borrowed from each section's own palette */
-  --food:#4B7A3C;         /* the moss of the recipe cards */
-  --trips:#27506B;        /* the indigo of the Japan guide */
-  --albums:#9C5B7C;       /* plum — not used anywhere yet */
-  --things:#B06A3B;       /* terracotta — not used anywhere yet */
+  /* one per section — each section's own hue, softened a touch so it
+     sits with the blush instead of shouting over it */
+  --food:#587A50;         /* the moss of the recipe cards */
+  --trips:#4F6B7D;        /* the indigo of the Japan guide, greyed toward Cool Steel */
+  --albums:#8E5B72;       /* plum — not used anywhere yet */
+  --things:#9A6545;       /* terracotta — not used anywhere yet */
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{
-  background:var(--paper);
+  /* a soft blush glow behind the cover, a fixed 480px tall so it looks
+     the same on a phone and a wide screen, fading into the paper */
+  background:
+    radial-gradient(ellipse 130% 480px at 50% 0, rgba(255,219,218,.9), rgba(255,219,218,0)) no-repeat,
+    var(--paper);
   color:var(--ink);
   font-family:"Karla",system-ui,-apple-system,sans-serif;
   line-height:1.6;
@@ -74,7 +85,7 @@ body{
 }
 .card:hover,.card:focus-visible{
   transform:translateY(-3px);
-  box-shadow:0 10px 26px rgba(36,31,26,.09);
+  box-shadow:0 10px 26px rgba(96,77,83,.12);
   border-color:var(--accent);
   outline:none;
 }
@@ -139,7 +150,7 @@ body{
   background:var(--ink);color:var(--paper);
   border-radius:14px;padding:15px 17px;
   display:flex;gap:13px;align-items:center;
-  box-shadow:0 12px 34px rgba(36,31,26,.3);
+  box-shadow:0 12px 34px rgba(96,77,83,.3);
   font-size:14px;line-height:1.45;z-index:50;
   animation:rise .3s ease both;
 }

@@ -8,7 +8,7 @@
    Bump CACHE when you change what's in PRECACHE, otherwise phones
    keep serving the old copy.
    ============================================================ */
-const CACHE = "feyre-v3";
+const CACHE = "feyre-v4";
 
 /* The shell: the few files that must be there for the app to open
    at all with no signal. Paths are relative so this works both at
