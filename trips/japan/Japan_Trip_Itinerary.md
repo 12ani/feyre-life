@@ -23,7 +23,7 @@
 *Times are rough guides — shift them as the day goes.*
 
 ### Day 1 — Mon Oct 19 · Tokyo (arrive)
-- Land at Narita (Terminal 2) **4:00 – ~5:15 pm** — AS 123 from Seattle (left Sun Oct 18, 1:20 pm). Allow ~1 hr for immigration + bags, then Uber to the hotel.
+- Land at Narita (Terminal 2) **4:00 – ~5:15 pm** — Alaska Airlines from Seattle (left Sun Oct 18, 1:20 pm). Allow ~1 hr for immigration + bags, then Uber to the hotel.
 - Ramen dinner · keep it light (jet lag) 🍜 **~7:30 – 8:30 pm**
 
 ### Day 2 — Tue Oct 20 · Tokyo (teamLab + Asakusa + Akihabara)
@@ -83,9 +83,9 @@
 
 ### Thu Oct 29 · Departure
 - Check out → taxi to Itami **~5:00 am** — ~30 min, arrive ~5:35 am. Not KIX. Ask the front desk to book the taxi the night before — the first airport bus from Namba (6:10 am) is too late.
-- Itami (ITM) → Haneda (HND) **7:05 am** — AI 8008, flown by ANA · 1h 5m · lands 8:10 am. No pre-reserved seats; you get them at check-in.
+- Itami (ITM) → Haneda (HND) **7:05 am** — Air India, flown by ANA · 1h 5m · lands 8:10 am. No pre-reserved seats; you get them at check-in.
 - 2h 20m layover at Haneda **8:10 – 10:30 am** — Domestic arrival → free shuttle to the international terminal (T3), then immigration and security. Don't linger.
-- Haneda (HND) → Delhi (DEL) **10:30 am** — AI 357 · 787-8 Dreamliner · 10h 5m · lands 5:05 pm Delhi time.
+- Haneda (HND) → Delhi (DEL) **10:30 am** — Air India · 787-8 Dreamliner · 10h 5m · lands 5:05 pm Delhi time.
 
 ---
 
@@ -94,7 +94,7 @@
 **Now (~4 months out):**
 - [ ] All 3 hotels — prioritize **Kyoto** (sells out fastest for autumn), then Osaka, then Tokyo
 - [ ] Flights (or set price alerts on each leg) — Seattle → Tokyo and Osaka → Delhi are booked
-- [ ] Choose seats on AI 357 (Haneda → Delhi) — none assigned yet for Shivani or Jiten
+- [ ] Choose seats on the Haneda → Delhi flight — none assigned yet
 - [ ] Tip: book free-cancellation hotel rates now to lock location + price
 
 **~1–2 months before:**
@@ -129,9 +129,9 @@
 
 | Leg | Route | Date | Notes |
 |-----|-------|------|-------|
-| 1 | Seattle (SEA) → Tokyo (NRT) | Oct 18 · 1:20 pm → Oct 19 · 4:00 pm | **Booked.** AS 123, Alaska Airlines · 787-9 · nonstop 10h 40m · lands next day (date line) · seats given at check-in |
-| 2a | Osaka (ITM) → Tokyo (HND) | Oct 29 · 7:05 am → 8:10 am | **Booked.** AI 8008, operated by ANA · A318 · 1h 5m · seats given at check-in |
-| 2b | Tokyo (HND) → Delhi (DEL) | Oct 29 · 10:30 am → 5:05 pm | **Booked.** AI 357 · 787-8 · 10h 5m · 2h 20m layover before it |
+| 1 | Seattle (SEA) → Tokyo (NRT) | Oct 18 · 1:20 pm → Oct 19 · 4:00 pm | **Booked.** Alaska Airlines · 787-9 · nonstop 10h 40m · lands next day (date line) · seats given at check-in |
+| 2a | Osaka (ITM) → Tokyo (HND) | Oct 29 · 7:05 am → 8:10 am | **Booked.** Air India, operated by ANA · A318 · 1h 5m · seats given at check-in |
+| 2b | Tokyo (HND) → Delhi (DEL) | Oct 29 · 10:30 am → 5:05 pm | **Booked.** Air India · 787-8 · 10h 5m · 2h 20m layover before it |
 | 3 | Delhi → Seattle | Nov 1 | 1-stop (via Dubai/Doha/Seoul); Oct–Nov is the cheap window |
 
 **Outbound fare (leg 1):** Saver, Economy (X) · carry-on included · 1st and 2nd checked bags free.
