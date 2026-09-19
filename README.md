@@ -23,7 +23,7 @@ feyre-life/
 │   ├── index.html          the list of recipes
 │   ├── shared/             the scaling engine
 │   ├── breads/             sourdough focaccia
-│   └── cakes/              castella cake
+│   └── cakes/              castella cake · banana ogura cake
 └── trips/              ← trips
     ├── index.html          the list of trips
     ├── japan/              guide · original notes

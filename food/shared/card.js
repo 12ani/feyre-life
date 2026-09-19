@@ -111,6 +111,14 @@ const state = {
   doneStep: new Set()
 };
 
+/* a #slug on the end of the address opens that recipe's tab, so the
+   list of recipes can link straight to one of the tabs on this page */
+const fromHash = RECIPES.findIndex(r => r.slug === location.hash.slice(1));
+if (fromHash > -1) {
+  state.index = fromHash;
+  state.size = startSize(RECIPES[fromHash]);
+}
+
 const $tabs = document.getElementById("tabs");
 const $card = document.getElementById("card");
 
@@ -185,9 +193,36 @@ const CASTELLA_ART = `
   </g>
 </svg>`;
 
+/* a round ogura with a wedge set aside, and the banana it came from */
+const BANANA_OGURA_ART = `
+<svg viewBox="0 0 240 200" fill="none" stroke="currentColor"
+     stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <!-- the round tin's worth of cake -->
+  <path d="M40 66c0-11 25-20 56-20s56 9 56 20-25 20-56 20-56-9-56-20z"/>
+  <path d="M40 66v32c0 11 25 20 56 20s56-9 56-20V66"/>
+  <!-- the browned top, just inside the rim -->
+  <path d="M47 70c7 7 26 12 49 12s42-5 49-12" stroke-width="1.8"/>
+  <!-- one wedge, cut and set aside -->
+  <path d="M168 126l48-16c6 7 10 18 10 30l-58-14z"/>
+  <path d="M168 126v18l58 14v-18"/>
+  <path d="M168 133l58 14" stroke-width="1.8"/>
+  <!-- airy crumb -->
+  <g stroke-width="1.6">
+    <circle cx="60" cy="98" r="2"/><circle cx="82" cy="108" r="1.7"/>
+    <circle cx="98" cy="96" r="1.6"/><circle cx="118" cy="105" r="1.9"/>
+    <circle cx="138" cy="98" r="1.5"/>
+    <circle cx="188" cy="139" r="1.7"/><circle cx="207" cy="147" r="1.5"/>
+  </g>
+  <!-- the banana it came from: blunt at the stem, both ends turned up -->
+  <path d="M40 146c10 40 70 46 94 6l-8-11c-14 25-64 19-86 5z"/>
+  <path d="M130 146l8-9M40 146l-4-3"/>
+  <path d="M54 156c24 16 52 12 68-6" stroke-width="1.7"/>
+</svg>`;
+
 const ART = {
   "sourdough-focaccia": FOCACCIA_ART,
-  "castella-cake": CASTELLA_ART
+  "castella-cake": CASTELLA_ART,
+  "banana-ogura-cake": BANANA_OGURA_ART
 };
 
 function render() {

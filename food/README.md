@@ -4,7 +4,8 @@ Recipe cards you can resize. Open a category's `index.html` in a browser, pick a
 pan (or a serving count), and every amount rescales itself.
 
 **[index.html](index.html)** lists every recipe. Right now there are two categories:
-**[breads/](breads/index.html)** → Sourdough Focaccia, and **[cakes/](cakes/index.html)** → Castella Cake.
+**[breads/](breads/index.html)** → Sourdough Focaccia, and **[cakes/](cakes/index.html)** →
+Castella Cake and Banana Ogura Cake.
 
 ## Folder structure
 
@@ -22,7 +23,8 @@ food/
 └── cakes/
     ├── index.html
     ├── cakes.js             ★ the cake recipes
-    └── castella-cake.md     the original recipe notes
+    ├── castella-cake.md     the original recipe notes
+    └── banana-ogura-cake.md
 ```
 
 The split that matters: **`shared/` is machinery, category folders are food.**
@@ -41,7 +43,9 @@ Adding a recipe should never mean opening a file that does fraction arithmetic.
 
 Open `breads/breads.js`, copy the whole `{ ... }` block for the focaccia, paste it
 after (with a comma between them), and change the values. A tab bar appears at the
-top of the page by itself once there's more than one recipe in the file.
+top of the page by itself once there's more than one recipe in the file, and
+`cakes/index.html#castella-cake` — the page, then the recipe's `slug` — opens
+straight to that tab, which is how `food/index.html` links to one of them.
 
 Each ingredient looks like this:
 
