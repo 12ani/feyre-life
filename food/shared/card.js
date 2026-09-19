@@ -96,6 +96,10 @@ function withArticle(label) {
 /* ============================================================
    STATE + RENDER
    ============================================================ */
+/* which recipe this page shows: every recipe page names its own slug
+   on <body data-recipe="...">, so a page is one recipe and nothing else */
+const recipe = RECIPES.find(r => r.slug === document.body.dataset.recipe) || RECIPES[0];
+
 /* pick returns the starting size for a recipe: a pan index, or a serving count */
 function startSize(r) {
   return r.scaleBy === "pan"
@@ -104,35 +108,20 @@ function startSize(r) {
 }
 
 const state = {
-  index: 0,
-  size: startSize(RECIPES[0]),   // pan index in "pan" mode, servings count otherwise
-  unit: "g",                     // "g" or "cup"
+  size: startSize(recipe),   // pan index in "pan" mode, servings count otherwise
+  unit: "g",                 // "g" or "cup"
   doneIng: new Set(),
   doneStep: new Set()
 };
 
-/* a #slug on the end of the address opens that recipe's tab, so the
-   list of recipes can link straight to one of the tabs on this page */
-const fromHash = RECIPES.findIndex(r => r.slug === location.hash.slice(1));
-if (fromHash > -1) {
-  state.index = fromHash;
-  state.size = startSize(RECIPES[fromHash]);
-}
-
-const $tabs = document.getElementById("tabs");
 const $card = document.getElementById("card");
 
-function renderTabs() {
-  if (RECIPES.length < 2) { $tabs.style.display = "none"; return; }
-  $tabs.innerHTML = RECIPES.map((r, i) =>
-    `<button class="tab ${i === state.index ? "on" : ""}" data-i="${i}">${r.emoji} ${r.title}</button>`
-  ).join("");
-  $tabs.querySelectorAll(".tab").forEach(b => b.onclick = () => {
-    state.index = +b.dataset.i;
-    state.size = startSize(RECIPES[state.index]);
-    state.doneIng.clear(); state.doneStep.clear();
-    render();
-  });
+/* the link at the top goes back the way you came — to the list, the
+   front door, wherever. Opened cold (a bookmark, a shared link), there
+   is nothing to go back to, so its href takes you to the recipes. */
+const $back = document.getElementById("back");
+if ($back && document.referrer && new URL(document.referrer).origin === location.origin) {
+  $back.onclick = e => { e.preventDefault(); history.back(); };
 }
 
 /* little line drawings, one per recipe (matched by slug), drawn in
@@ -226,7 +215,7 @@ const ART = {
 };
 
 function render() {
-  const r = RECIPES[state.index];
+  const r = recipe;
   const byPan = r.scaleBy === "pan";
   const pan = byPan ? r.pans[state.size] : null;
   const scale = byPan ? pan.area / r.basePan.area : state.size / r.baseServings;
@@ -351,5 +340,4 @@ function render() {
   document.getElementById("reset").onclick = () => { state.doneStep.clear(); state.doneIng.clear(); render(); };
 }
 
-renderTabs();
 render();

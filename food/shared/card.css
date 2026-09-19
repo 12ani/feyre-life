@@ -77,13 +77,14 @@ body{
   margin:-8px;   /* tucks the inner edge of each dot behind the card */
 }
 
-/* ---------- recipe tabs (only when >1 recipe) ---------- */
-.tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:0 auto 16px;max-width:940px}
-.tab{
-  font-family:"Karla",sans-serif;font-size:13px;padding:8px 15px;border-radius:999px;
-  border:1.5px solid var(--moss);background:transparent;color:var(--moss-deep);cursor:pointer
+/* ---------- back links, above and below the card ---------- */
+.feyre-back{
+  display:block;max-width:940px;margin:0 auto 12px;
+  font-family:"DM Mono",monospace;font-size:12px;letter-spacing:.08em;
+  color:var(--ink-soft);text-decoration:none;opacity:.8;
 }
-.tab.on{background:var(--moss);color:var(--on-accent)}
+.feyre-back:hover{opacity:1;color:var(--ink)}
+.feyre-back.below{text-align:center;margin:34px auto 40px}
 
 /* ---------- hero ---------- */
 .hero{display:flex;gap:26px;align-items:flex-start;justify-content:space-between}
@@ -195,5 +196,5 @@ footer{text-align:center;margin-top:30px;padding-top:20px;border-top:1.5px dashe
   body{background:#fff;padding:0}
   .frame{background:none;padding:0}
   .sheet{border:0}
-  .tabs,.controls,.print,.progress,.progress-lbl,.batch{display:none}
+  .feyre-back,.controls,.print,.progress,.progress-lbl,.batch{display:none}
 }
