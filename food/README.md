@@ -94,10 +94,11 @@ One exception: the scalloped border is a small SVG written directly into the
 spelled out there as `%23A9C47E` (that's `#A9C47E` with the `#` escaped). If you
 change the green, change that one too — there's a comment above it saying so.
 
-A category can have its own colours without touching the others: `cakes/`
-puts `class="theme-butter"` on its `<body>`, and `.theme-butter` near the top of
-`card.css` redefines the same variables in shades of yellow (plus its own copy
-of the frame dots). Copy that block to make another theme.
+A recipe can have its own colours without touching the others: the castella page
+puts `class="theme-butter"` on its `<body>` and the banana ogura page
+`class="theme-caramel"`, while the focaccia keeps the matcha of `:root`. Each
+theme is a small block near the top of `card.css` that redefines the same
+variables (plus its own copy of the frame dots). Copy one to make another.
 
 ## Why three languages
 
