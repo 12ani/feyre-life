@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Jiten’s packing checklist · Feyre Life</title>
+<meta name="theme-color" content="#FDE0DF">
+<link rel="manifest" href="../../app/manifest.webmanifest">
+<link rel="apple-touch-icon" href="../../app/icons/apple-touch-icon.png">
+<link rel="icon" href="../../app/icons/favicon-32.png" sizes="32x32">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Karla:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../app/shell.css">
+<link rel="stylesheet" href="packing.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="cover">
+    <h1 class="serif">Jiten’s packing checklist</h1>
+    <p class="sub">Everything to bring</p>
+    <div class="rule"></div>
+  </header>
+
+  <!-- the trip — the day chips, toggles and the list below are drawn by packing.js -->
+  <section class="pack-panel" aria-label="The trip">
+    <label class="pack-label" for="days">How many days?</label>
+    <div class="days-row">
+      <div class="stepper">
+        <button type="button" id="minus" aria-label="One day fewer">&minus;</button>
+        <span class="count">
+          <input id="days" type="number" inputmode="numeric" min="1" max="60" value="7">
+          <span class="unit" id="days-word">days</span>
+        </span>
+        <button type="button" id="plus" aria-label="One day more">+</button>
+      </div>
+      <div class="chips" id="quick" role="group" aria-label="Quick picks"></div>
+    </div>
+
+    <div class="pack-trip">
+      <span class="pack-label" id="opts-label">This trip has</span>
+      <div class="chips" id="opts" role="group" aria-labelledby="opts-label"></div>
+      <p class="hint" id="hint" hidden></p>
+    </div>
+  </section>
+
+  <div class="pack-progress">
+    <div class="row"><b id="done">0</b> of <span id="total">0</span> <span id="progress-note">packed</span></div>
+    <div class="track"><i id="bar"></i></div>
+  </div>
+
+  <div id="list"><!-- one card per group, drawn by packing.js --></div>
+
+  <div class="pack-actions">
+    <button type="button" class="restart" id="restart">Start over</button>
+    <span class="pack-help">Ticks are saved on this phone.</span>
+  </div>
+
+  <a class="back" href="../../index.html">&larr; everything</a>
+  <p class="foot">Kept by Shivani</p>
+</div>
+
+<!-- the list (edit this one) -->
+<script src="items.js"></script>
+<!-- the checklist engine (leave this one alone) -->
+<script src="packing.js"></script>
+<!-- offline + the iPhone install hint, shared with every shell page -->
+<script src="../../app/app.js"></script>
+</body>
+</html>

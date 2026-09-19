@@ -26,7 +26,8 @@ feyre-life/
 │   └── cakes/              castella cake
 └── trips/              ← trips
     ├── index.html          the list of trips
-    └── japan/              guide · original notes
+    ├── japan/              guide · original notes
+    └── packing/            packing checklist by trip length (the list is items.js)
 ```
 
 ## The one design rule

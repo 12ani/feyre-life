@@ -29,6 +29,7 @@
   --trips:#4F6B7D;        /* the indigo of the Japan guide, greyed toward Cool Steel */
   --albums:#8E5B72;       /* plum — not used anywhere yet */
   --things:#9A6545;       /* terracotta — not used anywhere yet */
+  --packing:#9E4A5B;      /* deep Old Rose — Jiten's packing checklist */
 
   /* the four-point sparkle from the palette card, used as a mask so it
      can take any colour: under each title, and before each card's label */
@@ -130,6 +131,9 @@ body{
   color:var(--accent);border:1px solid currentColor;
   border-radius:999px;padding:3px 11px;opacity:.9;
 }
+
+/* a card that takes the whole row (the packing checklist) */
+.card.wide{grid-column:1 / -1}
 
 /* a section with nothing in it yet — present, but visibly waiting */
 .card.empty{

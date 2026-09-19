@@ -49,6 +49,13 @@
       <span class="count">1 trip</span>
     </a>
 
+    <a class="card wide" href="trips/packing/index.html" style="--accent:var(--packing)">
+      <span class="kicker">Before you go</span>
+      <h2>Jiten’s packing checklist</h2>
+      <p>Pick how many days — it lists everything to bring, ready to tick off.</p>
+      <span class="count" id="packing-count">pick the days</span>
+    </a>
+
     <!-- Albums and Keepsakes are waiting in the wings: uncomment a card
          once its section has something in it. Empty placeholders made the
          front door look unfinished.
@@ -74,5 +81,16 @@
 </div>
 
 <script src="app/app.js"></script>
+<script>
+  /* the packing card shows how far along the packing is — the checklist
+     page leaves a small summary on this phone every time it changes */
+  try {
+    const s = (JSON.parse(localStorage.getItem("feyre-packing")) || {}).summary;
+    if (s && s.total) {
+      document.getElementById("packing-count").textContent =
+        `${s.days}-day trip · ${s.done === s.total ? "all packed ✓" : s.done + " of " + s.total + " packed"}`;
+    }
+  } catch (e) { /* no saved list yet — the card keeps its default */ }
+</script>
 </body>
 </html>
