@@ -96,6 +96,10 @@ function withArticle(label) {
 /* ============================================================
    STATE + RENDER
    ============================================================ */
+/* which recipe this page shows: every recipe page names its own slug
+   on <body data-recipe="...">, so a page is one recipe and nothing else */
+const recipe = RECIPES.find(r => r.slug === document.body.dataset.recipe) || RECIPES[0];
+
 /* pick returns the starting size for a recipe: a pan index, or a serving count */
 function startSize(r) {
   return r.scaleBy === "pan"
@@ -104,27 +108,20 @@ function startSize(r) {
 }
 
 const state = {
-  index: 0,
-  size: startSize(RECIPES[0]),   // pan index in "pan" mode, servings count otherwise
-  unit: "g",                     // "g" or "cup"
+  size: startSize(recipe),   // pan index in "pan" mode, servings count otherwise
+  unit: "g",                 // "g" or "cup"
   doneIng: new Set(),
   doneStep: new Set()
 };
 
-const $tabs = document.getElementById("tabs");
 const $card = document.getElementById("card");
 
-function renderTabs() {
-  if (RECIPES.length < 2) { $tabs.style.display = "none"; return; }
-  $tabs.innerHTML = RECIPES.map((r, i) =>
-    `<button class="tab ${i === state.index ? "on" : ""}" data-i="${i}">${r.emoji} ${r.title}</button>`
-  ).join("");
-  $tabs.querySelectorAll(".tab").forEach(b => b.onclick = () => {
-    state.index = +b.dataset.i;
-    state.size = startSize(RECIPES[state.index]);
-    state.doneIng.clear(); state.doneStep.clear();
-    render();
-  });
+/* the link at the top goes back the way you came — to the list, the
+   front door, wherever. Opened cold (a bookmark, a shared link), there
+   is nothing to go back to, so its href takes you to the recipes. */
+const $back = document.getElementById("back");
+if ($back && document.referrer && new URL(document.referrer).origin === location.origin) {
+  $back.onclick = e => { e.preventDefault(); history.back(); };
 }
 
 /* little line drawings, one per recipe (matched by slug), drawn in
@@ -185,13 +182,40 @@ const CASTELLA_ART = `
   </g>
 </svg>`;
 
+/* a round ogura with a wedge set aside, and the banana it came from */
+const BANANA_OGURA_ART = `
+<svg viewBox="0 0 240 200" fill="none" stroke="currentColor"
+     stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <!-- the round tin's worth of cake -->
+  <path d="M40 66c0-11 25-20 56-20s56 9 56 20-25 20-56 20-56-9-56-20z"/>
+  <path d="M40 66v32c0 11 25 20 56 20s56-9 56-20V66"/>
+  <!-- the browned top, just inside the rim -->
+  <path d="M47 70c7 7 26 12 49 12s42-5 49-12" stroke-width="1.8"/>
+  <!-- one wedge, cut and set aside -->
+  <path d="M168 126l48-16c6 7 10 18 10 30l-58-14z"/>
+  <path d="M168 126v18l58 14v-18"/>
+  <path d="M168 133l58 14" stroke-width="1.8"/>
+  <!-- airy crumb -->
+  <g stroke-width="1.6">
+    <circle cx="60" cy="98" r="2"/><circle cx="82" cy="108" r="1.7"/>
+    <circle cx="98" cy="96" r="1.6"/><circle cx="118" cy="105" r="1.9"/>
+    <circle cx="138" cy="98" r="1.5"/>
+    <circle cx="188" cy="139" r="1.7"/><circle cx="207" cy="147" r="1.5"/>
+  </g>
+  <!-- the banana it came from: blunt at the stem, both ends turned up -->
+  <path d="M40 146c10 40 70 46 94 6l-8-11c-14 25-64 19-86 5z"/>
+  <path d="M130 146l8-9M40 146l-4-3"/>
+  <path d="M54 156c24 16 52 12 68-6" stroke-width="1.7"/>
+</svg>`;
+
 const ART = {
   "sourdough-focaccia": FOCACCIA_ART,
-  "castella-cake": CASTELLA_ART
+  "castella-cake": CASTELLA_ART,
+  "banana-ogura-cake": BANANA_OGURA_ART
 };
 
 function render() {
-  const r = RECIPES[state.index];
+  const r = recipe;
   const byPan = r.scaleBy === "pan";
   const pan = byPan ? r.pans[state.size] : null;
   const scale = byPan ? pan.area / r.basePan.area : state.size / r.baseServings;
@@ -316,5 +340,4 @@ function render() {
   document.getElementById("reset").onclick = () => { state.doneStep.clear(); state.doneIng.clear(); render(); };
 }
 
-renderTabs();
 render();

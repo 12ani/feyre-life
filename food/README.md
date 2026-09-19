@@ -1,10 +1,11 @@
 # Food
 
-Recipe cards you can resize. Open a category's `index.html` in a browser, pick a
-pan (or a serving count), and every amount rescales itself.
+Recipe cards you can resize. Open a recipe's page in a browser, pick a pan (or a
+serving count), and every amount rescales itself.
 
-**[index.html](index.html)** lists every recipe. Right now there are two categories:
-**[breads/](breads/index.html)** → Sourdough Focaccia, and **[cakes/](cakes/index.html)** → Castella Cake.
+**[index.html](index.html)** lists every recipe, and each one has its own page:
+**[breads/](breads/sourdough-focaccia.html)** → Sourdough Focaccia, and
+**[cakes/](cakes/castella-cake.html)** → Castella Cake and Banana Ogura Cake.
 
 ## Folder structure
 
@@ -16,13 +17,15 @@ food/
 │   ├── card.css             how the cards look
 │   └── card.js              the maths and the drawings
 ├── breads/              ← one folder per category of food
-│   ├── index.html           open this in a browser
+│   ├── sourdough-focaccia.html  one page per recipe — open this in a browser
 │   ├── breads.js            ★ the bread recipes — your file
 │   └── sourdough-focaccia.md    the original handwritten notes
 └── cakes/
-    ├── index.html
+    ├── castella-cake.html
+    ├── banana-ogura-cake.html
     ├── cakes.js             ★ the cake recipes
-    └── castella-cake.md     the original recipe notes
+    ├── castella-cake.md     the original recipe notes
+    └── banana-ogura-cake.md
 ```
 
 The split that matters: **`shared/` is machinery, category folders are food.**
@@ -32,16 +35,22 @@ Adding a recipe should never mean opening a file that does fraction arithmetic.
 
 | File | What it is | Do you edit it? |
 |---|---|---|
-| `breads/index.html` | The skeleton — a header, an empty box, two `<script>` tags | Rarely |
+| `breads/sourdough-focaccia.html` | The skeleton — a header, an empty box, two `<script>` tags, and the recipe's `slug` on `<body>` | Once per recipe |
 | `shared/card.css` | How it looks — colours, spacing, fonts | When you want a different look |
 | `breads/breads.js` | **The food.** All the bread recipes | **Yes, this is your file** |
 | `shared/card.js` | The engine — does the maths, draws the card | No |
 
 ## Adding a recipe
 
-Open `breads/breads.js`, copy the whole `{ ... }` block for the focaccia, paste it
-after (with a comma between them), and change the values. A tab bar appears at the
-top of the page by itself once there's more than one recipe in the file.
+Three small steps, because a recipe is a page of its own:
+
+1. Open `breads/breads.js`, copy the whole `{ ... }` block for the focaccia, paste
+   it after (with a comma between them), and change the values — including `slug`,
+   which is the recipe's name in lowercase-with-dashes.
+2. Copy a page file next to it, rename it `<slug>.html`, and change two lines: the
+   `<title>`, and `data-recipe="<slug>"` on `<body>`. That's what tells the shared
+   engine which recipe this page shows.
+3. Add a line to `food/index.html` so it appears in the list.
 
 Each ingredient looks like this:
 
@@ -85,10 +94,11 @@ One exception: the scalloped border is a small SVG written directly into the
 spelled out there as `%23A9C47E` (that's `#A9C47E` with the `#` escaped). If you
 change the green, change that one too — there's a comment above it saying so.
 
-A category can have its own colours without touching the others: `cakes/`
-puts `class="theme-butter"` on its `<body>`, and `.theme-butter` near the top of
-`card.css` redefines the same variables in shades of yellow (plus its own copy
-of the frame dots). Copy that block to make another theme.
+A recipe can have its own colours without touching the others: the castella page
+puts `class="theme-butter"` on its `<body>` and the banana ogura page
+`class="theme-caramel"`, while the focaccia keeps the matcha of `:root`. Each
+theme is a small block near the top of `card.css` that redefines the same
+variables (plus its own copy of the frame dots). Copy one to make another.
 
 ## Why three languages
 

@@ -75,6 +75,68 @@ const RECIPES = [
         "Eat it warm for the most wobble, or chill it for firmer, cleaner slices."
       ]
     }
+  },
+  {
+    slug: "banana-ogura-cake",
+    title: "Banana Ogura Cake",
+    emoji: "🍌",
+    blurb: "Cotton-soft banana ogura — somewhere between a chiffon and a custard, and better than banana bread. Blended banana, no butter, and a long slow bake in a water bath. Based on Bake with Paws' recipe.",
+    tags: ["Meringue", "Water bath", "Bakes at 290°F"],
+    /* Ogura scales by PAN as well: it's poured shallow and baked slowly in
+       a water bath, so a wider tin needs more batter to keep that depth. */
+    scaleBy: "pan",
+    mixName: "batter",
+    /* round tins go in as area — π×r² — so they scale against the squares */
+    basePan: { label: "8in round", area: 50 },
+    pans: [
+      { label: "6in", area: 28, full: "6-inch round tin" },
+      { label: "7in", area: 38, full: "7-inch round tin" },
+      { label: "9×5", area: 45, full: "9×5 loaf pan" },
+      { label: "8in", area: 50, full: "8-inch round tin" },
+      { label: "9in", area: 64, full: "9-inch round tin" }
+    ],
+    meta: [
+      { k: "Hands-on", v: "~25 min" },
+      { k: "Bake", v: "70 min" },
+      { k: "Oven", v: "290°F / 145°C" }
+    ],
+    ingredients: [
+      { g: 90,  each: 18, eachLabel: "large", name: "egg yolks" },
+      { g: 50,  each: 50, eachLabel: "large", name: "whole egg", sub: "whisked in with the yolks" },
+      { g: 160, gPerCup: 240, name: "ripe banana", sub: "blended smooth" },
+      { g: 50,  gPerCup: 240, name: "neutral oil" },
+      { g: 1.5, gPerCup: 288, name: "salt", sub: "fine" },
+      { g: 80,  gPerCup: 125, name: "plain flour", sub: "sifted" },
+      { g: 160, each: 32, eachLabel: "large", name: "egg whites", sub: "for the meringue" },
+      { g: 1,   gPerCup: 154, name: "cream of tartar" },
+      { g: 65,  gPerCup: 195, name: "caster sugar", sub: "whipped into the whites" }
+    ],
+    /* {{n}} is a gram amount that rescales with the batch */
+    bakeNote: "the 70 min bake at 145°C still holds",
+    noteTitle: "How ripe?",
+    note: "Heavily freckled, almost black bananas blend sweeter and smoother. Weigh the purée rather than counting fruit: one medium banana gives about 80g, and you want {{160}}.",
+    steps: [
+      { t: "Prep",     d: "Heat the oven to 145°C / 290°F with top and bottom heat. Line the tin with parchment, and if it has a loose base, wrap the outside in foil so the water bath can't seep in." },
+      { t: "Banana",   d: "Blend the bananas to a smooth purée rather than mashing them — lumps of fruit sink and leave holes in a crumb this fine." },
+      { t: "Yolks",    d: "Separate the eggs. Add the whole egg to the yolks and whisk them together." },
+      { t: "Batter",   d: "Whisk the oil, blended banana and salt into the yolks until combined, then add the sifted flour and mix until smooth." },
+      { t: "Meringue", d: "Whisk the egg whites with the cream of tartar until foamy, then add the sugar a little at a time and whisk to firm peaks — holding their shape, still glossy." },
+      { t: "Fold",     d: "Fold a third of the meringue into the banana batter to lighten it, pour that back over the remaining meringue, and fold gently until no white streaks remain." },
+      { t: "Pan",      d: "Pour into the tin, tap it lightly on the counter, and run a skewer through the batter to break up any large bubbles." },
+      { t: "Bath",     d: "Set the tin in a larger tray and pour in hot water to about 1.5 cm deep." },
+      { t: "Bake",     d: "Bake for 70 minutes, until the top is set and springs back when pressed." },
+      { t: "Invert",   d: "Lift the tin out of the water, tap it gently on the counter, then turn it upside down for 5–10 minutes. The cake sets hanging and shrinks far less." },
+      { t: "Cool",     d: "Let it cool before slicing. Chilled overnight it slices cleanly — and tastes better cold the next day." }
+    ],
+    extra: {
+      title: "For the softest crumb",
+      items: [
+        "Blend, don't mash. A smooth purée is what keeps the crumb even and the cake light.",
+        "Firm peaks, not stiff ones. Stiff meringue tears as you fold it and cracks the top.",
+        "Top the water bath up with hot water, never boiling — the gentle steam is the point of the long, low bake.",
+        "It keeps beautifully: wrapped and chilled, it's softer and more banana-ish on day two."
+      ]
+    }
   }
   /* Add more cakes here — same shape, and the tabs appear automatically. */
 ];

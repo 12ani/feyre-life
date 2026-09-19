@@ -37,6 +37,22 @@
   --on-accent:#fff;
   --art:var(--moss);
 }
+
+/* cakes/banana-ogura-cake.html wears .theme-caramel — the toasted
+   crust of a banana cake, so the two cakes don't look like one recipe */
+.theme-caramel{
+  --sage:#F7EADF;        /* page background — toasted cream */
+  --paper:#FFFCF8;       /* the card */
+  --ink:#402A1C;         /* text — dark crust */
+  --ink-soft:#6F5747;
+  --moss:#A85F33;        /* the accent — caramel, dark enough for white text */
+  --moss-deep:#8A4A26;
+  --line:#EBD8C6;
+  --tint:rgba(168,95,51,.13);
+  --line-soft:rgba(235,216,198,.6);
+  --on-accent:#fff;
+  --art:var(--moss);
+}
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   background:var(--sage);
@@ -71,19 +87,24 @@ body{
 .theme-butter .frame{
   border-image-source:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='66' height='66'%3E%3Cg fill='%23DDA93A'%3E%3Ccircle cx='11' cy='11' r='5.5'/%3E%3Ccircle cx='33' cy='11' r='5.5'/%3E%3Ccircle cx='55' cy='11' r='5.5'/%3E%3Ccircle cx='11' cy='33' r='5.5'/%3E%3Ccircle cx='55' cy='33' r='5.5'/%3E%3Ccircle cx='11' cy='55' r='5.5'/%3E%3Ccircle cx='33' cy='55' r='5.5'/%3E%3Ccircle cx='55' cy='55' r='5.5'/%3E%3C/g%3E%3C/svg%3E");
 }
+/* and the caramel theme's, a shade of toasted crust */
+.theme-caramel .frame{
+  border-image-source:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='66' height='66'%3E%3Cg fill='%23C98A5E'%3E%3Ccircle cx='11' cy='11' r='5.5'/%3E%3Ccircle cx='33' cy='11' r='5.5'/%3E%3Ccircle cx='55' cy='11' r='5.5'/%3E%3Ccircle cx='11' cy='33' r='5.5'/%3E%3Ccircle cx='55' cy='33' r='5.5'/%3E%3Ccircle cx='11' cy='55' r='5.5'/%3E%3Ccircle cx='33' cy='55' r='5.5'/%3E%3Ccircle cx='55' cy='55' r='5.5'/%3E%3C/g%3E%3C/svg%3E");
+}
 .sheet{
   background:var(--paper);border:2px solid var(--moss);border-radius:10px;
   padding:40px 44px 46px;position:relative;
   margin:-8px;   /* tucks the inner edge of each dot behind the card */
 }
 
-/* ---------- recipe tabs (only when >1 recipe) ---------- */
-.tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:0 auto 16px;max-width:940px}
-.tab{
-  font-family:"Karla",sans-serif;font-size:13px;padding:8px 15px;border-radius:999px;
-  border:1.5px solid var(--moss);background:transparent;color:var(--moss-deep);cursor:pointer
+/* ---------- back links, above and below the card ---------- */
+.feyre-back{
+  display:block;max-width:940px;margin:0 auto 12px;
+  font-family:"DM Mono",monospace;font-size:12px;letter-spacing:.08em;
+  color:var(--ink-soft);text-decoration:none;opacity:.8;
 }
-.tab.on{background:var(--moss);color:var(--on-accent)}
+.feyre-back:hover{opacity:1;color:var(--ink)}
+.feyre-back.below{text-align:center;margin:34px auto 40px}
 
 /* ---------- hero ---------- */
 .hero{display:flex;gap:26px;align-items:flex-start;justify-content:space-between}
@@ -195,5 +216,5 @@ footer{text-align:center;margin-top:30px;padding-top:20px;border-top:1.5px dashe
   body{background:#fff;padding:0}
   .frame{background:none;padding:0}
   .sheet{border:0}
-  .tabs,.controls,.print,.progress,.progress-lbl,.batch{display:none}
+  .feyre-back,.controls,.print,.progress,.progress-lbl,.batch{display:none}
 }

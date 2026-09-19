@@ -22,8 +22,8 @@ feyre-life/
 ├── food/               ← recipes  (has its own README)
 │   ├── index.html          the list of recipes
 │   ├── shared/             the scaling engine
-│   ├── breads/             sourdough focaccia
-│   └── cakes/              castella cake
+│   ├── breads/             sourdough focaccia  (one page per recipe)
+│   └── cakes/              castella cake · banana ogura cake
 └── trips/              ← trips
     ├── index.html          the list of trips
     ├── japan/              guide · original notes
