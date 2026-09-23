@@ -48,3 +48,17 @@ if ("serviceWorker" in navigator) {
     document.body.appendChild(bar);
   }, 2200);
 })();
+
+/* ---------- 3. back means back ----------
+   The back link keeps a real href, so it still works with no
+   JavaScript and when the page is opened cold from a home screen.
+   But if you got here from somewhere else in the app, "back" should
+   return you there rather than always to the front door. */
+(function () {
+  const link = document.querySelector(".back");
+  if (!link || !document.referrer) return;
+  try {
+    if (new URL(document.referrer).origin !== location.origin) return;
+  } catch (e) { return; }   // a referrer we can't parse — leave the href alone
+  link.addEventListener("click", e => { e.preventDefault(); history.back(); });
+})();
