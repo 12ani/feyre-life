@@ -163,6 +163,10 @@ body{
   color:var(--ink-soft);text-decoration:none;
 }
 .back:hover{color:var(--ink)}
+/* at the top of a page instead of the bottom — the cover gives back
+   the head room the link takes, so the title stays where it was */
+.back.top{margin:26px 0 0}
+.back.top + .cover{padding-top:22px}
 
 /* ---------- colophon ---------- */
 .foot{
