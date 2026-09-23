@@ -35,17 +35,15 @@
 - Meiji Shrine & Yoyogi Park **~9:00 – 10:15 am** — Calm forest shrine, right beside Harajuku.
 - Harajuku — Takeshita St & Omotesando 🍓 **~10:30 am – 2:15 pm** — Kiddy Land, the gacha shops (Capsule Lab by Capcom, C-pla, GachaGacha no Mori), crepes, lunch, the vintage shops in the backstreets, then Omotesando.
 - Shibuya shopping **~2:45 – 4:15 pm** — ~15 min walk from Omotesando. Loft for souvenirs & stickers, the Pokémon Center and Nintendo Tokyo (both in Shibuya PARCO).
-- Shibuya Sky at sunset **~4:30 – 5:45 pm** — Sunset is ~5 pm — book a time slot around 4:30 pm.
+- Shibuya Sky at sunset **~4:30 – 5:45 pm** — Sunset is 5:00 pm on the dot — book the 4:00 or 4:30 entry; there's no fixed exit time, so you can stay for the lit-up city.
 - Shibuya Crossing **~5:45 – 6:15 pm** — Walk the world's busiest crossing after dark.
 - Dinner in Shibuya **~6:30 – 7:30 pm** — Send luggage ahead to Kyoto from the hotel tonight.
 
-### Day 4 — Thu Oct 22 · Tokyo (Mt. Fuji DAY TRIP + Shinjuku night)
-- Bus · Busta Shinjuku → Kawaguchiko **~7:15 – 9:45 am** — Book ahead; mornings are clearest.
-- Chureito Pagoda **~10:15 am – 12:00 pm** — ~20 min by local train + walk. The iconic pagoda-and-Fuji shot, ~398 stairs up.
-- Lunch in Kawaguchiko 🍜 **~12:15 – 1:15 pm**
-- Oishi Park (lakeside) **~1:45 – 3:00 pm** — Fuji across the lake. Bus back to Shinjuku around 3:30 pm; traffic can add 30+ min.
-- Nakano Broadway · optional **~5:45 – 7:00 pm** — 5 min on the JR Chuo line. Vintage Seiko at Firekids (1F), Jackroad & Kamekichi (3F). Shops close ~8 pm. Skip it if you're tired.
-- Shinjuku by night 🍢 **~7:15 – 9:00 pm** — Godzilla Head, the 3D billboards, Yodobashi & Kitamura camera stores, dinner at Omoide Yokocho.
+### Day 4 — Thu Oct 22 · Tokyo (Mt. Fuji small-group tour)
+- Meet the tour at Shimbashi **7:50 am** — One stop on the Asakusa line from Higashi-ginza. In front of the MUFG bank by the Dai-ichi Hotel — look for the orange Tourist Japan flag.
+- The tour · Tourist Japan small group **7:50 am – ~6:00 pm** — Chureito Pagoda & Arakura Sengen Shrine (2 hrs) · Oishi Park, Lake Kawaguchi (2 hrs) · Oshino Hakkai (1 hr) · Mt Fuji 5th Station (1 hr) · Fujiyoshida for lunch & souvenirs 🍜 (1 hr). Order and pace are the guide’s; lunch isn’t included. The 5th Station is 2,300 m and near freezing in late October — take a warm layer; if snow closes the road they swap in another stop.
+- Back at Shimbashi **~6:00 pm** — One stop home on the Asakusa line, or dinner in Ginza.
+- Shinjuku by night 🍢 · if you have legs left **~7:00 – 9:00 pm** — 15 min on the Yamanote from Shimbashi: Godzilla Head, the 3D billboards, Yodobashi & Kitamura camera stores, skewers at Omoide Yokocho.
 
 ### Day 5 — Fri Oct 23 · Tokyo → Kyoto (Ginza + travel)
 - Shop Ginza **~10:00 am – 12:00 pm** — Check out and leave bags at the front desk first. Mitsukoshi & Itoya (open 10:00 am), Seiko House (Wako) & Seiko Dream Square for Seiko watches (10:30 am), Ginza Six (10:30 am), the Uniqlo flagship (11:00 am).
@@ -100,11 +98,11 @@
 **~1–2 months before:**
 - [ ] Shinkansen seat reservation (Tokyo → Kyoto, Day 5 — early afternoon, after Ginza)
 - [x] teamLab Planets tickets for the morning of Tue Oct 20 — booked
-- [ ] Kawaguchiko highway bus (Day 4) — reserve in autumn
+- [x] Mt Fuji tour — booked: Tourist Japan small group, $149 each, meet 7:50 am at Shimbashi
 
 **A few weeks before:**
 - [ ] Add Suica to your phones — on iPhone, use Apple Wallet or the Welcome Suica Mobile app
-- [ ] Shibuya Sky sunset time slot (~4:30 pm) for Wed Oct 21 (sunset slots go first)
+- [ ] Shibuya Sky for Wed Oct 21 — book the 4:00 or 4:30 pm entry (sunset is 5:00; these slots go first)
 - [ ] glänta Ninenzaka ring workshop, 10:30 am on Mon Oct 26 (online booking closes the day before)
 - [ ] Kiyomizu-dera / any timed-entry tickets
 - [ ] Riverside / special-occasion restaurant reservations
@@ -118,10 +116,10 @@
 ## Transport Cheat-Sheet
 
 - **City transit:** Google Maps gives flawless step-by-step train directions everywhere.
-- **Yamanote line:** the JR loop connecting Shibuya, Harajuku, Akihabara, Ueno, Tokyo Station — stay near a Yamanote stop for easy access.
-- **Shinkansen to Kyoto:** departs Tokyo Station or Shinagawa (both on the Yamanote loop). Fastest train = Nozomi (~2h15).
-- **Fuji day:** highway bus from Busta Shinjuku (Level 4, Shinjuku Station south side) → Kawaguchiko. Book ahead; go early.
-- **Luggage:** use takkyubin courier to send big bags Tokyo → Kyoto so you travel light on the Fuji day.
+- **Your three stations:** Higashi-ginza (Hibiya + Asakusa lines) 3 min from the hotel, Tsukiji 4 min, Ginza 8 min. One stop to Shimbashi for the Fuji tour; Ginza → Shinjuku 17 min on the Marunouchi line; Tokyo Station two stops.
+- **Shinkansen to Kyoto:** departs Tokyo Station, two stops from the hotel. Fastest train = Nozomi (~2h15).
+- **Fuji day:** the small-group tour collects you at Shimbashi and brings you back there — no trains to work out.
+- **Luggage:** hand big bags to the front desk on the Wednesday night (takkyubin) and they meet you in Kyoto, so the bullet-train day is hands-free.
 
 ---
 
