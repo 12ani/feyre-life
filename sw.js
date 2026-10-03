@@ -8,7 +8,7 @@
    Bump CACHE when you change what's in PRECACHE, otherwise phones
    keep serving the old copy.
    ============================================================ */
-const CACHE = "feyre-v8";
+const CACHE = "feyre-v9";
 
 /* The shell: the few files that must be there for the app to open
    at all with no signal. Paths are relative so this works both at
@@ -33,6 +33,8 @@ const PRECACHE = [
   "./food/cakes/castella-cake.html",
   "./food/cakes/banana-ogura-cake.html",
   "./food/cakes/cakes.js",
+  "./food/fillings/chocolate-ganache.html",
+  "./food/fillings/fillings.js",
   "./food/shared/card.css",
   "./food/shared/card.js"
 ];

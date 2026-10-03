@@ -208,10 +208,32 @@ const BANANA_OGURA_ART = `
   <path d="M54 156c24 16 52 12 68-6" stroke-width="1.7"/>
 </svg>`;
 
+/* a bowl of set ganache with the spatula still standing in it,
+   and the chopped chocolate it was made from */
+const GANACHE_ART = `
+<svg viewBox="0 0 240 200" fill="none" stroke="currentColor"
+     stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <!-- the bowl -->
+  <path d="M32 106c0-9 25-16 56-16s56 7 56 16-25 16-56 16-56-7-56-16z"/>
+  <path d="M32 106c0 30 25 52 56 52s56-22 56-52"/>
+  <!-- the ganache sitting in it, a little below the rim -->
+  <path d="M45 110c0-6 19-10 43-10s43 4 43 10-19 10-43 10-43-4-43-10z" stroke-width="1.9"/>
+  <!-- the swirl left by the last stir -->
+  <path d="M70 108c6-5 20-6 28-1" stroke-width="1.6"/>
+  <!-- the spatula, handle out, blade buried in the ganache -->
+  <path d="M112 104l52-50c3-3 5-3 8 0s3 5 0 8l-52 50"/>
+  <!-- the chocolate it was made from: a bar and the chopped corners -->
+  <path d="M166 136l30-10 11 24-30 10z"/>
+  <path d="M176 133l11 24M186 129l11 24" stroke-width="1.7"/>
+  <path d="M206 160l13-5 5 11-13 5z" stroke-width="1.9"/>
+  <path d="M158 166l12-4 4 10-12 4z" stroke-width="1.9"/>
+</svg>`;
+
 const ART = {
   "sourdough-focaccia": FOCACCIA_ART,
   "castella-cake": CASTELLA_ART,
-  "banana-ogura-cake": BANANA_OGURA_ART
+  "banana-ogura-cake": BANANA_OGURA_ART,
+  "chocolate-ganache": GANACHE_ART
 };
 
 function render() {
@@ -287,8 +309,12 @@ function render() {
       </div>
       <p class="pan-hint">
         ${scaled
-          ? `${mix[0].toUpperCase() + mix.slice(1)} <b>${scale < 1 ? "scaled down" : "scaled up"} ×${Math.round(scale * 100) / 100}</b> to fill <b>${pan ? withArticle(pan.full) : ""}</b> at the same depth as the original — so <b>${r.bakeNote || "the bake time holds"}</b>.<span class="scaled-flag">adjusted</span>`
-          : `The original batch, sized for <b>${pan ? withArticle(pan.full) : ""}</b>.`}
+          ? `${mix[0].toUpperCase() + mix.slice(1)} <b>${scale < 1 ? "scaled down" : "scaled up"} ×${Math.round(scale * 100) / 100}</b> ${byPan
+              ? `to fill <b>${withArticle(pan.full)}</b> at the same depth as the original — so <b>${r.bakeNote || "the bake time holds"}</b>`
+              : `to make <b>${state.size} servings</b>${r.scaleNote ? ` — <b>${r.scaleNote}</b>` : ""}`}.<span class="scaled-flag">adjusted</span>`
+          : `The original batch, ${byPan
+              ? `sized for <b>${withArticle(pan.full)}</b>`
+              : `written for <b>${r.baseServings} servings</b>`}.`}
       </p>
     </div>
 
