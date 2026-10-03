@@ -4,8 +4,9 @@ Recipe cards you can resize. Open a recipe's page in a browser, pick a pan (or a
 serving count), and every amount rescales itself.
 
 **[index.html](index.html)** lists every recipe, and each one has its own page:
-**[breads/](breads/sourdough-focaccia.html)** → Sourdough Focaccia, and
-**[cakes/](cakes/castella-cake.html)** → Castella Cake and Banana Ogura Cake.
+**[breads/](breads/sourdough-focaccia.html)** → Sourdough Focaccia,
+**[cakes/](cakes/castella-cake.html)** → Castella Cake and Banana Ogura Cake, and
+**[fillings/](fillings/chocolate-ganache.html)** → Chocolate Ganache.
 
 ## Folder structure
 
@@ -20,12 +21,16 @@ food/
 │   ├── sourdough-focaccia.html  one page per recipe — open this in a browser
 │   ├── breads.js            ★ the bread recipes — your file
 │   └── sourdough-focaccia.md    the original handwritten notes
-└── cakes/
-    ├── castella-cake.html
-    ├── banana-ogura-cake.html
-    ├── cakes.js             ★ the cake recipes
-    ├── castella-cake.md     the original recipe notes
-    └── banana-ogura-cake.md
+├── cakes/
+│   ├── castella-cake.html
+│   ├── banana-ogura-cake.html
+│   ├── cakes.js             ★ the cake recipes
+│   ├── castella-cake.md     the original recipe notes
+│   └── banana-ogura-cake.md
+└── fillings/            ← not a bake of its own: what goes between the layers
+    ├── chocolate-ganache.html
+    ├── fillings.js          ★ the fillings
+    └── chocolate-ganache.md
 ```
 
 The split that matters: **`shared/` is machinery, category folders are food.**
@@ -72,15 +77,18 @@ scaleBy: "servings"   // you pick a number — for curries, soups, dinners
 ```
 
 Focaccia uses `"pan"` because a pan is what actually decides how much dough you
-need. A number of servings would be made up.
+need. A number of servings would be made up. The ganache goes the other way:
+nothing is baked, so no depth has to stay right — you just want enough to go
+round the slices, and it sets `baseServings` instead of `basePan` and `pans`.
 
 ## Adding a category
 
 Copy the `breads/` folder, rename it (`desserts/`, `curries/`), rename the data
-file inside to match, and update the one `<script src="...">` line in its
-`index.html` to point at the new name. Then add a line for it to `food/index.html`
-so it shows up in the list. The `../shared/` paths stay exactly as
-they are — that's the whole point of keeping the engine in one place.
+file inside to match, and in each page file point the one `<script src="...">`
+line at the new data file. Then add a line for it to `food/index.html` so it
+shows up in the list. The `../shared/` paths stay exactly as they are — that's
+the whole point of keeping the engine in one place. `fillings/` was made this
+way, from `cakes/`.
 
 ## Changing the colours
 
@@ -95,8 +103,9 @@ spelled out there as `%23A9C47E` (that's `#A9C47E` with the `#` escaped). If you
 change the green, change that one too — there's a comment above it saying so.
 
 A recipe can have its own colours without touching the others: the castella page
-puts `class="theme-butter"` on its `<body>` and the banana ogura page
-`class="theme-caramel"`, while the focaccia keeps the matcha of `:root`. Each
+puts `class="theme-butter"` on its `<body>`, the banana ogura page
+`class="theme-caramel"` and the ganache `class="theme-cocoa"`, while the focaccia
+keeps the matcha of `:root`. Each
 theme is a small block near the top of `card.css` that redefines the same
 variables (plus its own copy of the frame dots). Copy one to make another.
 
@@ -124,5 +133,8 @@ instead of `gPerCup`. `{ g: 72, each: 18, eachLabel: "large", name: "egg yolks" 
 reads "4 large egg yolks" and rescales to the nearest half egg.
 
 - `mixName: "batter"` — the word the card uses when it rescales ("dough" by default).
+- `bakeNote` / `scaleNote` — the end of the line under the picker once you've
+  resized: `bakeNote` for a recipe that scales by pan ("the 70 min bake at 145°C
+  still holds"), `scaleNote` for one that scales by servings.
 - The drawing at the top is chosen by the recipe's `slug` in `shared/card.js`
   (the `ART` list). A recipe without a drawing just shows none.

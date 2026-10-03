@@ -53,6 +53,21 @@
   --on-accent:#fff;
   --art:var(--moss);
 }
+/* fillings/chocolate-ganache.html wears .theme-cocoa — dark chocolate
+   and cocoa cream, the one brown the filling actually is */
+.theme-cocoa{
+  --sage:#F0E4DC;        /* page background — cocoa cream */
+  --paper:#FEFAF7;       /* the card */
+  --ink:#32211A;         /* text — bitter chocolate */
+  --ink-soft:#6A5349;
+  --moss:#6B4230;        /* the accent — dark chocolate, white text sits on it */
+  --moss-deep:#4E2F20;
+  --line:#E2D0C6;
+  --tint:rgba(107,66,48,.12);
+  --line-soft:rgba(226,208,198,.6);
+  --on-accent:#fff;
+  --art:var(--moss);
+}
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   background:var(--sage);
@@ -90,6 +105,10 @@ body{
 /* and the caramel theme's, a shade of toasted crust */
 .theme-caramel .frame{
   border-image-source:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='66' height='66'%3E%3Cg fill='%23C98A5E'%3E%3Ccircle cx='11' cy='11' r='5.5'/%3E%3Ccircle cx='33' cy='11' r='5.5'/%3E%3Ccircle cx='55' cy='11' r='5.5'/%3E%3Ccircle cx='11' cy='33' r='5.5'/%3E%3Ccircle cx='55' cy='33' r='5.5'/%3E%3Ccircle cx='11' cy='55' r='5.5'/%3E%3Ccircle cx='33' cy='55' r='5.5'/%3E%3Ccircle cx='55' cy='55' r='5.5'/%3E%3C/g%3E%3C/svg%3E");
+}
+/* and the cocoa theme's, a milk-chocolate brown */
+.theme-cocoa .frame{
+  border-image-source:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='66' height='66'%3E%3Cg fill='%238E5B41'%3E%3Ccircle cx='11' cy='11' r='5.5'/%3E%3Ccircle cx='33' cy='11' r='5.5'/%3E%3Ccircle cx='55' cy='11' r='5.5'/%3E%3Ccircle cx='11' cy='33' r='5.5'/%3E%3Ccircle cx='55' cy='33' r='5.5'/%3E%3Ccircle cx='11' cy='55' r='5.5'/%3E%3Ccircle cx='33' cy='55' r='5.5'/%3E%3Ccircle cx='55' cy='55' r='5.5'/%3E%3C/g%3E%3C/svg%3E");
 }
 .sheet{
   background:var(--paper);border:2px solid var(--moss);border-radius:10px;
