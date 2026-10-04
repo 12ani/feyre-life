@@ -68,6 +68,22 @@
   --on-accent:#fff;
   --art:var(--moss);
 }
+/* cakes/orange-upside-down-cake.html wears .theme-marmalade — the
+   colour of the caramel and peel on top of it, redder than the caramel
+   theme so the two cakes don't read as the same card */
+.theme-marmalade{
+  --sage:#FCEADA;        /* page background — pale peel */
+  --paper:#FFFBF6;       /* the card */
+  --ink:#3D2114;         /* text */
+  --ink-soft:#78553F;
+  --moss:#B8431C;        /* the accent — burnt orange, white text sits on it */
+  --moss-deep:#93360F;
+  --line:#F2D9C2;
+  --tint:rgba(184,67,28,.12);
+  --line-soft:rgba(242,217,194,.6);
+  --on-accent:#fff;
+  --art:var(--moss);
+}
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   background:var(--sage);
@@ -109,6 +125,10 @@ body{
 /* and the cocoa theme's, a milk-chocolate brown */
 .theme-cocoa .frame{
   border-image-source:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='66' height='66'%3E%3Cg fill='%238E5B41'%3E%3Ccircle cx='11' cy='11' r='5.5'/%3E%3Ccircle cx='33' cy='11' r='5.5'/%3E%3Ccircle cx='55' cy='11' r='5.5'/%3E%3Ccircle cx='11' cy='33' r='5.5'/%3E%3Ccircle cx='55' cy='33' r='5.5'/%3E%3Ccircle cx='11' cy='55' r='5.5'/%3E%3Ccircle cx='33' cy='55' r='5.5'/%3E%3Ccircle cx='55' cy='55' r='5.5'/%3E%3C/g%3E%3C/svg%3E");
+}
+/* and the marmalade theme's, the orange of the peel */
+.theme-marmalade .frame{
+  border-image-source:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='66' height='66'%3E%3Cg fill='%23E08A4A'%3E%3Ccircle cx='11' cy='11' r='5.5'/%3E%3Ccircle cx='33' cy='11' r='5.5'/%3E%3Ccircle cx='55' cy='11' r='5.5'/%3E%3Ccircle cx='11' cy='33' r='5.5'/%3E%3Ccircle cx='55' cy='33' r='5.5'/%3E%3Ccircle cx='11' cy='55' r='5.5'/%3E%3Ccircle cx='33' cy='55' r='5.5'/%3E%3Ccircle cx='55' cy='55' r='5.5'/%3E%3C/g%3E%3C/svg%3E");
 }
 .sheet{
   background:var(--paper);border:2px solid var(--moss);border-radius:10px;
