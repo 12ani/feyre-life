@@ -72,5 +72,5 @@ const RECIPES = [
       ]
     }
   }
-  /* Add more recipes here — same shape, and the tabs appear automatically. */
+  /* Add more recipes here — same shape, plus a page file beside this one. */
 ];

@@ -229,11 +229,44 @@ const GANACHE_ART = `
   <path d="M158 166l12-4 4 10-12 4z" stroke-width="1.9"/>
 </svg>`;
 
+/* the cake turned out, caramelled slices up, with the fruit it took */
+const ORANGE_CAKE_ART = `
+<svg viewBox="0 0 240 200" fill="none" stroke="currentColor"
+     stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <!-- the cake, already turned out -->
+  <path d="M32 70c0-13 29-24 64-24s64 11 64 24-29 24-64 24-64-11-64-24z"/>
+  <path d="M32 70v24c0 13 29 24 64 24s64-11 64-24V70"/>
+  <!-- the caramel that ran down the side -->
+  <path d="M38 78c8 9 30 15 58 15s50-6 58-15" stroke-width="1.8"/>
+  <!-- three slices on top, flattened to the same angle as the cake.
+       They stay plain rings: at the size this is drawn, segment lines
+       inside something this small just fill in. The cut round below
+       says orange for all of them. -->
+  <g stroke-width="1.9">
+    <path d="M44 62c0-4 9-8 20-8s20 4 20 8-9 8-20 8-20-4-20-8z"/>
+    <path d="M52 62c0-2 5-4 12-4s12 2 12 4-5 4-12 4-12-2-12-4z" stroke-width="1.5"/>
+    <path d="M108 62c0-4 9-8 20-8s20 4 20 8-9 8-20 8-20-4-20-8z"/>
+    <path d="M116 62c0-2 5-4 12-4s12 2 12 4-5 4-12 4-12-2-12-4z" stroke-width="1.5"/>
+    <path d="M76 78c0-4 9-8 20-8s20 4 20 8-9 8-20 8-20-4-20-8z"/>
+    <path d="M84 78c0-2 5-4 12-4s12 2 12 4-5 4-12 4-12-2-12-4z" stroke-width="1.5"/>
+  </g>
+  <!-- one cut round, segments and all -->
+  <circle cx="198" cy="58" r="24"/>
+  <circle cx="198" cy="58" r="18" stroke-width="1.6"/>
+  <g stroke-width="1.5">
+    <path d="M198 55v-14M201 56l12-7M201 60l12 7M198 61v14M195 60l-12 7M195 56l-12-7"/>
+  </g>
+  <!-- and a whole one waiting its turn -->
+  <circle cx="52" cy="160" r="19"/>
+  <path d="M56 143c6-10 16-16 22-14-2 8-10 14-22 14z" stroke-width="1.9"/>
+</svg>`;
+
 const ART = {
   "sourdough-focaccia": FOCACCIA_ART,
   "castella-cake": CASTELLA_ART,
   "banana-ogura-cake": BANANA_OGURA_ART,
-  "chocolate-ganache": GANACHE_ART
+  "chocolate-ganache": GANACHE_ART,
+  "orange-upside-down-cake": ORANGE_CAKE_ART
 };
 
 function render() {

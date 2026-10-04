@@ -137,6 +137,72 @@ const RECIPES = [
         "It keeps beautifully: wrapped and chilled, it's softer and more banana-ish on day two."
       ]
     }
+  },
+  {
+    slug: "orange-upside-down-cake",
+    title: "Orange Upside-Down Cake",
+    emoji: "🍊",
+    blurb: "A butter cake baked over caramel and orange slices, turned out while it's still warm. Ground almonds keep the crumb tender, yogurt keeps it damp, and blanching the slices first is what stops the peel turning bitter.",
+    tags: ["Caramel", "Blanched peel", "Bakes at 350°F"],
+    /* Scales by PAN like the other cakes: the caramel has to cover the
+       base and the batter has to sit at the same depth over it. */
+    scaleBy: "pan",
+    mixName: "batter",
+    basePan: { label: "8in round", area: 50 },
+    pans: [
+      { label: "6in", area: 28, full: "6-inch round tin" },
+      { label: "7in", area: 38, full: "7-inch round tin" },
+      { label: "9×5", area: 45, full: "9×5 loaf pan" },
+      { label: "8in", area: 50, full: "8-inch round tin" },
+      { label: "9in", area: 64, full: "9-inch round tin" }
+    ],
+    meta: [
+      { k: "Hands-on", v: "~35 min" },
+      { k: "Bake", v: "45–55 min" },
+      { k: "Oven", v: "350°F / 175°C" }
+    ],
+    ingredients: [
+      { g: 280, each: 140, eachLabel: "medium", name: "oranges", sub: "thin-skinned, for the top" },
+      { g: 55,  gPerCup: 240, name: "unsalted butter", sub: "for the caramel" },
+      { g: 90,  gPerCup: 200, name: "light brown sugar", sub: "for the caramel" },
+      { g: 115, gPerCup: 240, name: "unsalted butter", sub: "softened, for the cake" },
+      { g: 150, gPerCup: 195, name: "caster sugar" },
+      { g: 8,   gPerCup: 96,  name: "orange zest", sub: "finely grated" },
+      { g: 100, each: 50, eachLabel: "large", name: "eggs" },
+      { g: 160, gPerCup: 125, name: "plain flour" },
+      { g: 40,  gPerCup: 96,  name: "ground almonds" },
+      { g: 7,   gPerCup: 221, name: "baking powder" },
+      { g: 3,   gPerCup: 288, name: "salt", sub: "fine" },
+      { g: 100, gPerCup: 245, name: "plain yogurt", sub: "or sour cream" },
+      { g: 50,  gPerCup: 240, name: "orange juice", sub: "fresh" },
+      { g: 6,   gPerCup: 288, name: "vanilla extract" }
+    ],
+    /* {{n}} is a gram amount that rescales with the batch */
+    bakeNote: "the 45–55 min bake at 175°C still holds",
+    noteTitle: "No ground almonds?",
+    note: "Use {{40}} more plain flour and an extra spoonful of yogurt. The crumb comes out a shade less tender, and no less orange.",
+    steps: [
+      { t: "Prep",      d: "Heat the oven to 175°C / 350°F. Butter the tin and line its base with parchment — the caramel goes on top of the paper, and that's what gets the top out in one piece." },
+      { t: "Blanch",    d: "Slice the oranges into thin rounds, about 3mm, flicking out any pips. Simmer them in water for 2 minutes and drain them flat on a tea towel. This is what takes the bitterness out of the peel." },
+      { t: "Caramel",   d: "Melt the butter with the brown sugar over low heat until it's smooth and just bubbling, then pour it into the tin and tilt until the base is covered." },
+      { t: "Arrange",   d: "Lay the orange slices over the caramel, overlapping, working from the outside in. Press them flat — this is the top of the cake, upside down." },
+      { t: "Zest",      d: "Rub the zest into the caster sugar with your fingers until it's damp and smells of the whole fruit, then beat it with the softened butter for 3–4 minutes, until pale and fluffy." },
+      { t: "Eggs",      d: "Beat in the eggs one at a time, then the vanilla. If the batter looks split, a spoonful of the flour brings it back together." },
+      { t: "Fold",      d: "Whisk the flour, ground almonds, baking powder and salt together. Fold in a third, then half the yogurt and juice, and repeat, finishing with the dry. Stop as soon as it's even." },
+      { t: "Bake",      d: "Spoon the batter over the oranges without dragging them out of place, level the top, and bake for 45–55 minutes, until a skewer in the middle comes out clean." },
+      { t: "Turn out",  d: "Rest it for 10–15 minutes, run a knife around the edge, then invert it onto a plate while it's still warm. Caramel left to cool sets like glue." },
+      { t: "Finish",    d: "Peel the parchment away, press any stray slice back into place, and brush the syrup left in the tin over the top." }
+    ],
+    extra: {
+      title: "For the best top",
+      items: [
+        "Thin-skinned oranges only — navel or Cara Cara, and blood oranges for a red-streaked top. Thick peel stays chewy however long you blanch it.",
+        "Zest the oranges before you squeeze them — the same fruit gives you both, and it is impossible the other way round.",
+        "Slice thin, about 3mm. Thick rounds steam the cake underneath them and slide off as you turn it out.",
+        "A pinch of flaky salt over the warm top makes the caramel taste more of itself.",
+        "It keeps better than it looks: wrapped, at room temperature, day two is moister than day one."
+      ]
+    }
   }
-  /* Add more cakes here — same shape, and the tabs appear automatically. */
+  /* Add more cakes here — same shape, plus a page file beside this one. */
 ];

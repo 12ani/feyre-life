@@ -5,7 +5,8 @@ serving count), and every amount rescales itself.
 
 **[index.html](index.html)** lists every recipe, and each one has its own page:
 **[breads/](breads/sourdough-focaccia.html)** → Sourdough Focaccia,
-**[cakes/](cakes/castella-cake.html)** → Castella Cake and Banana Ogura Cake, and
+**[cakes/](cakes/castella-cake.html)** → Castella Cake, Banana Ogura Cake and
+Orange Upside-Down Cake, and
 **[fillings/](fillings/chocolate-ganache.html)** → Chocolate Ganache.
 
 ## Folder structure
@@ -24,9 +25,11 @@ food/
 ├── cakes/
 │   ├── castella-cake.html
 │   ├── banana-ogura-cake.html
+│   ├── orange-upside-down-cake.html
 │   ├── cakes.js             ★ the cake recipes
 │   ├── castella-cake.md     the original recipe notes
-│   └── banana-ogura-cake.md
+│   ├── banana-ogura-cake.md
+│   └── orange-upside-down-cake.md
 └── fillings/            ← not a bake of its own: what goes between the layers
     ├── chocolate-ganache.html
     ├── fillings.js          ★ the fillings
@@ -104,8 +107,9 @@ change the green, change that one too — there's a comment above it saying so.
 
 A recipe can have its own colours without touching the others: the castella page
 puts `class="theme-butter"` on its `<body>`, the banana ogura page
-`class="theme-caramel"` and the ganache `class="theme-cocoa"`, while the focaccia
-keeps the matcha of `:root`. Each
+`class="theme-caramel"`, the orange cake `class="theme-marmalade"` and the
+ganache `class="theme-cocoa"`, while the focaccia keeps the matcha of `:root`.
+Each
 theme is a small block near the top of `card.css` that redefines the same
 variables (plus its own copy of the frame dots). Copy one to make another.
 
