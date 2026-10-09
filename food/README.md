@@ -17,7 +17,8 @@ food/
 ├── index.html           ← the list of recipes, linked from the front door
 ├── shared/              ← the engine, used by every category
 │   ├── card.css             how the cards look
-│   └── card.js              the maths and the drawings
+│   ├── art.js               the little drawings, one per recipe
+│   └── card.js              the maths
 ├── breads/              ← one folder per category of food
 │   ├── sourdough-focaccia.html  one page per recipe — open this in a browser
 │   ├── breads.js            ★ the bread recipes — your file
@@ -43,7 +44,7 @@ Adding a recipe should never mean opening a file that does fraction arithmetic.
 
 | File | What it is | Do you edit it? |
 |---|---|---|
-| `breads/sourdough-focaccia.html` | The skeleton — a header, an empty box, two `<script>` tags, and the recipe's `slug` on `<body>` | Once per recipe |
+| `breads/sourdough-focaccia.html` | The skeleton — a header, an empty box, three `<script>` tags, and the recipe's `slug` on `<body>` | Once per recipe |
 | `shared/card.css` | How it looks — colours, spacing, fonts | When you want a different look |
 | `breads/breads.js` | **The food.** All the bread recipes | **Yes, this is your file** |
 | `shared/card.js` | The engine — does the maths, draws the card | No |
@@ -58,7 +59,12 @@ Three small steps, because a recipe is a page of its own:
 2. Copy a page file next to it, rename it `<slug>.html`, and change two lines: the
    `<title>`, and `data-recipe="<slug>"` on `<body>`. That's what tells the shared
    engine which recipe this page shows.
-3. Add a line to `food/index.html` so it appears in the list.
+3. Add a card to `food/index.html` so it appears in the list: copy one
+   `<li>`, then change the link, the name, the two facts, the category pill,
+   `data-art` (the slug) and the two colours (`--thumb` and `--art`, the
+   background and accent of the theme the page wears in `shared/card.css`).
+   To show a photo instead of the drawing, put an `<img>` inside `.thumb` and
+   drop `data-art`.
 
 Each ingredient looks like this:
 
@@ -140,5 +146,6 @@ reads "4 large egg yolks" and rescales to the nearest half egg.
 - `bakeNote` / `scaleNote` — the end of the line under the picker once you've
   resized: `bakeNote` for a recipe that scales by pan ("the 70 min bake at 145°C
   still holds"), `scaleNote` for one that scales by servings.
-- The drawing at the top is chosen by the recipe's `slug` in `shared/card.js`
-  (the `ART` list). A recipe without a drawing just shows none.
+- The drawing at the top is chosen by the recipe's `slug` in `shared/art.js`
+  (the `ART` list), which the list of recipes uses for its thumbnails too. A
+  recipe without a drawing just shows none.
