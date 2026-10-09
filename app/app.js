@@ -53,12 +53,13 @@ if ("serviceWorker" in navigator) {
    The back link keeps a real href, so it still works with no
    JavaScript and when the page is opened cold from a home screen.
    But if you got here from somewhere else in the app, "back" should
-   return you there rather than always to the front door. */
+   return you there rather than always to the front door. A page can
+   have one at the top and one at the bottom; both behave the same. */
 (function () {
-  const link = document.querySelector(".back");
-  if (!link || !document.referrer) return;
+  const links = document.querySelectorAll(".back");
+  if (!links.length || !document.referrer) return;
   try {
     if (new URL(document.referrer).origin !== location.origin) return;
   } catch (e) { return; }   // a referrer we can't parse — leave the href alone
-  link.addEventListener("click", e => { e.preventDefault(); history.back(); });
+  links.forEach(link => link.addEventListener("click", e => { e.preventDefault(); history.back(); }));
 })();
